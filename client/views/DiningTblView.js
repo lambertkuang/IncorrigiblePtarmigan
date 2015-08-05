@@ -1,0 +1,1 @@
+/* dining table views will be populated by guest views */

@@ -1,0 +1,1 @@
+/* create guest model in backbone */

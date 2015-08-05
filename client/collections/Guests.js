@@ -1,0 +1,1 @@
+/* create guests collection in backbone */
