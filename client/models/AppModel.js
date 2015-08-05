@@ -1,0 +1,1 @@
+/* create app model in backbone */

@@ -1,0 +1,1 @@
+/* create view for a single guest in backbone */
