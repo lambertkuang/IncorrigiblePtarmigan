@@ -1,0 +1,1 @@
+/* create app view in backbone */
