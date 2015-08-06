@@ -1,0 +1,13 @@
+{
+  "name": "IncorrigiblePtarmigan",
+  "version": "0.0.1",
+  "main": [
+    "client/models/AppModel.js"
+  ],
+  "dependencies": {
+    "underscore": "~1.8.3",
+    "jquery": "~2.1.4",
+    "backbone": "~1.2.1"
+  },
+  "devDependencies": {}
+}
