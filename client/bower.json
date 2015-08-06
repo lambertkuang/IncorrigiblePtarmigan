@@ -1,0 +1,16 @@
+{
+  "name": "IncorrigiblePtarmigan",
+  "version": "0.0.1",
+  "main": [
+    "client/models/AppModel.js"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ]
+}
