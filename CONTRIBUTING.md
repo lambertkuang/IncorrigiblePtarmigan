@@ -169,7 +169,7 @@ no problem getting your changes merged in.
 
 <!-- Links -->
 [readme]: https://github.com/IncorrigiblePtarmigan/IncorrigiblePtarmigan/blob/master/README.md
-[style guide]: https://github.com/IncorrigiblePtarmigan/IncorrigiblePtarmigan/blob/master/_STYLE-GUIDE.md
+[style guide]: https://github.com/IncorrigiblePtarmigan/IncorrigiblePtarmigan/blob/master/STYLE-GUIDE.md
 [curriculum workflow diagram]: http://i.imgur.com/p0e4tQK.png
 [cons of merge]: https://f.cloud.github.com/assets/1577682/1458274/1391ac28-435e-11e3-88b6-69c85029c978.png
 [tools workflow diagram]: http://i.imgur.com/kzlrDj7.png
