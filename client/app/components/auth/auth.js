@@ -1,5 +1,6 @@
 angular.module('seatly.auth', [])
-
+// this Auth controller is responsible for our client side authentication
+// in our signup/signin forms using the injected Auth service
 .controller('AuthController', function($scope, $window, $location, Auth) {
   $scope.user = {};
 
