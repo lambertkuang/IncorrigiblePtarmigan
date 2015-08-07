@@ -50,21 +50,26 @@ module.exports = function(app, express) {
     });
   });
 
-// edit guest's plus-one using guestName as param (we set guestName as unique in schema)
-  app.put('/edit/:guestname', function(req, res){
-    Guest.findOne({ 'guestName': req.params.guestname }, function(err, guest){
+// edit guest properties
+  app.put('/edit', function(req, res){
+    var changes = req.body.changes;
+
+    // test object: { "changes": [ "Jennie Kim", { "guestName": "JK", "friendName": "Eric"} ]}
+    Guest.findOne({ guestName: changes[0]}, function(err, guest){
+      console.log("inside findOne");
       if(err){
         res.send(400);
-      } else {
-        guest.friendName = req.body.friendName;
-        guest.save(function(err){
-          if(err) {
-            res.send(400);
-          } else {
-            res.send(200);
-          }
-        });
+      } 
+      for(var key in changes[1]) {
+        guest[key] = changes[1][key];
       }
+      guest.save(function(err){
+        if(err) {
+          res.send(400);
+        } else {
+          res.send(200);
+        }
+      });      
     });
   });
 
