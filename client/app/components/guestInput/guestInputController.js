@@ -26,8 +26,8 @@ angular.module('seatly.guestInput', [])
 		}
 	};
 
-	$scope.done = function(){
-    // call a function in our factory with guest arr as input 
+	$scope.addAllGuests = function(){
+    // call a function in our factory with guest arr as input
     return guestInputFactory.addAllGuests($scope.guests);
 	};
 
