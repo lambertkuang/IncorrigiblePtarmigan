@@ -1,8 +1,12 @@
 /* create and export guest schema */
 var mongoose = require('mongoose');
 var GuestSchema = mongoose.Schema({
-  guestName: String,
-  friendId: Number,
+  guestName: {
+    type: String, 
+    required: true,
+    unique: true
+  },
+  friendName: String,
   diningTableId: Number,
   constraints: Array
 });
