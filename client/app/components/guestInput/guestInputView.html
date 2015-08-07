@@ -1,0 +1,16 @@
+<div ng-app="seatly.guestInput" ng-controller="guestInputCtrl">
+  <form name="guestInputForm">
+
+	  <input ng-model="guestName" type="text" class="form-control" placeholder="Your Guest's Name">
+
+	  <input ng-model="friendName" type="text" class="form-control" placeholder="Your Guest's Plus-One">
+
+	  <div>
+		  <button ng-click="addGuest()">Add Next Guest</button>
+	  </div>
+	  <div>
+		  <button ng-click="addAllGuests()">Done</button>
+	  </div>
+	  
+  </form>
+</div>
