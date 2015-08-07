@@ -18,14 +18,18 @@ angular.module('seatly', [
       })
       .when('/', {
         // default view before we implement auth will be edit page
-        // for now use the guestInput view
-        templateUrl: 'components/guestInput/guestInputView.html',
+        templateUrl: 'components/edit/editView.html',
+        controller: 'editController',
+        controllerAs: 'edit'
+      })
+      .when('/edit', {
+        templateUrl: 'components/edit/editView.html',
         controller: 'editController',
         controllerAs: 'edit'
       })
       .when('/guestinput', {
         templateUrl: 'components/guestInput/guestInputView.html',
-        controller: 'guestInputController',
+        controller: 'guestInputCtrl',
         controllerAs: 'guestInput'
       });
     $locationProvider.html5Mode(true);
