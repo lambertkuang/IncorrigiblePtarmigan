@@ -44,7 +44,7 @@ module.exports = function(app, express) {
       if(guests) {
         res.send(200, guests);
       } else {
-        res.send(500);
+        res.send(404);
       }
     });
   }); 
