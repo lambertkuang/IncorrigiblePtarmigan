@@ -49,6 +49,30 @@ module.exports = function(app, express) {
       }
     });
   });
+
+// edit guest's plus-one using guestName as param (we set guestName as unique in schema)
+  app.put('/edit/:guestname', function(req, res){
+    Guest.findOne({ 'guestName': req.params.guestname }, function(err, guest){
+      if(err){
+        res.send(400);
+      } else {
+        guest.friendName = req.body.friendName;
+        guest.save(function(err){
+          if(err) {
+            res.send(400);
+          } else {
+            res.send(200);
+          }
+        });
+      }
+    });
+  });
+
+// wildcard route
+  app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname + '/client/auth/signupView.html'));
+  });
+
 };
 
 
