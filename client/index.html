@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<title>Seatly</title>
+	<base href="/">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="custom.css">
+	<style>
+     body { padding-top:50px; padding-bottom:50px;  }
+	</style>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+  <script src="app/app.module.js"></script>
+  <script src="app/app.routes.js"></script>
+</head>
+
+<body class="container" ng-app="routerApp" ng-controller="mainController as main">
+  <header>
+  </header>
+
+  <main>
+    <div ng-view></div>
+  </main>
+
+</body>
+</html>
