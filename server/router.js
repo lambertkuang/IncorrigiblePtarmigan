@@ -1,19 +1,20 @@
 /* this will be our router for our express server */
 var mongoose = require('mongoose');
 var Guest = require('../app-db/guests/guestModel');
-
+var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
 
 
 module.exports = function(app, express) {
-
+  app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(bodyParser.json());
+  app.use(express.static(__dirname + '/../../client'));
 
-  app.get('/', function(req, res) {
-    res.send('Hellooooo WOOOOOORLD!!!!');
-  });
+  // app.get('/', function(req, res) {
+  //   res.send('Hellooooo WOOOOOORLD!!!!');
+  // });
 
 // posts a list of guests
   app.post('/create', function(req,res) {
@@ -47,7 +48,7 @@ module.exports = function(app, express) {
         res.send(404);
       }
     });
-  }); 
+  });
 };
 
 
@@ -63,9 +64,9 @@ module.exports = function(app, express) {
 // Add relationships (+1s)
 // Add constraints ('enemies')
 
-/* example objects for tests 
+/* example objects for tests
 
-Note: in Postman when doing a 'POST', it's important to input in the body by selection the 'raw' option and 
+Note: in Postman when doing a 'POST', it's important to input in the body by selection the 'raw' option and
 using a json format like so:
 {"guests":[{"guestName":"marco","friendName":"Lambert", "constraints":[]}]}
 
