@@ -10,7 +10,7 @@ angular.module('seatly.guestInput', [])
 		var guest = {
 			"guestName": $scope.guestName,
 			"friendName": $scope.friendName,
-			"diningTableId": null,
+			"diningTableId": -1,
 			"constraints": []
 		};
 		$scope.guests.push(guest);
@@ -19,16 +19,23 @@ angular.module('seatly.guestInput', [])
 			var newGuest = {
 				"guestName": $scope.friendName,
 				"friendName": $scope.guestName,
-				"diningTableId": null,
+				"diningTableId": -1,
 				"constraints": []
 			};
-			$scope.guests.push(guest);
+			$scope.guests.push(newGuest);
 		}
+		$scope.guestName = "";
+		$scope.friendName = "";
 	};
 
-	$scope.done = function(){
-    // call a function in our factory with guest arr as input 
-    return guestInputFactory.addAllGuests($scope.guests);
+	$scope.addAllGuests = function(){
+		$scope.addGuest();
+		var result = {
+			guests: $scope.guests
+		};
+		console.dir($scope.guests);
+    // call a function in our factory with guest arr as input
+    return guestInputFactory.addAllGuests(result);
 	};
 
 });
