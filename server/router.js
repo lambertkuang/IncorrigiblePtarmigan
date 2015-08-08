@@ -20,7 +20,7 @@ module.exports = function(app, express) {
   app.post('/create', function(req,res) {
     console.log('------------------------------');
     // console.log(req.body.guests[0]);
-    console.log(req.body.guests[0]);
+    console.log(req.body.guests);
     console.log('------------------------------');
     var guests = req.body.guests;
     for(var i =0; i<guests.length;i++){
@@ -59,7 +59,7 @@ module.exports = function(app, express) {
       console.log("inside findOne");
       if(err){
         res.send(400);
-      } 
+      }
       for(var key in changes[1]) {
         guest[key] = changes[1][key];
       }
@@ -69,7 +69,7 @@ module.exports = function(app, express) {
         } else {
           res.send(200);
         }
-      });      
+      });
     });
   });
 

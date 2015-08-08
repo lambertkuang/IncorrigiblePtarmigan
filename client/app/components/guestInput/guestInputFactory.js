@@ -1,4 +1,4 @@
-angular.module('seatly.guestInput', [])
+angular.module('seatly.guestInput')
 .factory('guestInputFactory', function($http){
 	var addAllGuests = function(guestsArray){
 		return $http({
