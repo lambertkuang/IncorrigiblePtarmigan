@@ -4,6 +4,7 @@ var Guest = require('../app-db/guests/guestModel');
 var User = require('../app-db/users/userModel');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var path = require('path');
 
 
 
@@ -13,9 +14,9 @@ module.exports = function(app, express) {
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../client'));
 
-  app.get('/', function(req, res) {
-    res.send('Hellooooo WOOOOOORLD!!!!');
-  });
+  // app.get('/', function(req, res) {
+  //   res.send('Hellooooo WOOOOOORLD!!!!');
+  // });
 
 // client POSTs signup and login
 // this is callback system, should refactor to promises
