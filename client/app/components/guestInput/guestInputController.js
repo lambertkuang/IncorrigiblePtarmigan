@@ -13,7 +13,7 @@ angular.module('seatly.guestInput', [])
 		var guest = {
 			"guestName": $scope.guestName,
 			"friendName": $scope.friendName,
-			"diningTableId": -1,
+			"diningTableId": null,
 			"constraints": []
 		};
 		$scope.guests.push(guest);
@@ -25,7 +25,7 @@ angular.module('seatly.guestInput', [])
 				// in the same way as she would a primary guest. A plus-one of a primary guest thus should not have
 				// their own plus-one property. Either this property should be blank, or set to a value that indicates
 				// that this guest is a plus-one (i.e. friendName: "Plus-one of " + $scope.guestName )
-				"friendName": $scope.guestName,
+				"friendName": "Plus-one of " + $scope.guestName,
 				"diningTableId": null,
 				"constraints": []
 			};

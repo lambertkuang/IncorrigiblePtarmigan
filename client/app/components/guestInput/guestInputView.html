@@ -31,11 +31,12 @@
 			  </div>
 
 			  <div>
-			  <h3 ng-show="guests.length>0">Guests Added in this Session</h3>
+			  <h3 ng-show="guests.length > 0">Guests Added in this Session</h3>
 			    <div class="highlight-box">
 			    <!-- TODO: Add logic to show that a plus-one guest is the plus-one of a primary guest -->
 					  <div class="input-list" ng-repeat="guest in guests | orderBy: 'guestName' ">
 					    {{guest.guestName}} 
+					    <!-- <p ng-show="guest.friendName contains 'Plus-one of' ">guest.friendName</p> -->
 					  </div>
 				  </div>
 			  </div>
