@@ -1,8 +1,10 @@
 /* this will be our router for our express server */
 var mongoose = require('mongoose');
 var Guest = require('../app-db/guests/guestModel');
+var User = require('../app-db/users/userModel');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var path = require('path');
 
 
 
@@ -16,7 +18,44 @@ module.exports = function(app, express) {
   //   res.send('Hellooooo WOOOOOORLD!!!!');
   // });
 
-// posts a list of guests
+// client POSTs signup and login
+// this is callback system, should refactor to promises
+  app.post('/api/user/signup', function(req, res) {
+    // check to see if the username already exists
+    console.log('woooo signup begins');
+    User.count({username: req.body.username}, function(err, num) {
+      // error querying database
+      if (err) {
+        console.log(new Error(err));
+        res.end();
+      } else {
+        if (num > 0) {
+          // no error saving, but there's already a user
+          res.end('That username is already taken. Try again, please.');
+        } else {
+          // no user, free to proceed
+          var newUser = new User({
+            username: req.body.username,
+            password: req.body.password
+          });
+          newUser.save(function(err, user) {
+            //if there's an error saving
+            if (err) {
+              console.log(new Error(err));
+              res.end(err);
+            } else {
+              // otherwise, start session...
+              // redirection is taken care of on client-side
+              console.log('successfully saved new user');
+              res.end();
+            }
+          }); // end of save
+        }
+      }
+    }); // end of count
+  }); // end of post
+
+// client-side posts a list of guests
   app.post('/create', function(req,res) {
     console.log('------------------------------');
     // console.log(req.body.guests[0]);
@@ -31,7 +70,7 @@ module.exports = function(app, express) {
       });
       newGuest.save(function(err,newGuest){
         if(err) return console.log(err);
-        console.log('//////WERE SAVING OMG!!! CRAZY !!!! ')
+        console.log('//////WE\'RE SAVING OMG!!! CRAZY !!!! ')
       });
     }
     res.send(200);
