@@ -1,3 +1,6 @@
+// TODO: Need to validate that the guest name is unique, so you can't add duplicate +1's 
+// TODO: Do not allow empty strings to be submitted for the guestName input
+
 angular.module('seatly.guestInput', [])
 .controller('guestInputCtrl', function($scope, guestInputFactory){
 	$scope.guests = [];
@@ -10,7 +13,7 @@ angular.module('seatly.guestInput', [])
 		var guest = {
 			"guestName": $scope.guestName,
 			"friendName": $scope.friendName,
-			"diningTableId": -1,
+			"diningTableId": null,
 			"constraints": []
 		};
 		$scope.guests.push(guest);
@@ -18,8 +21,12 @@ angular.module('seatly.guestInput', [])
 		if($scope.friendName){
 			var newGuest = {
 				"guestName": $scope.friendName,
-				"friendName": $scope.guestName,
-				"diningTableId": -1,
+				// NOTE: We may want to change the logic here. User does not 'count' the plus-one of a primary guest
+				// in the same way as she would a primary guest. A plus-one of a primary guest thus should not have
+				// their own plus-one property. Either this property should be blank, or set to a value that indicates
+				// that this guest is a plus-one (i.e. friendName: "Plus-one of " + $scope.guestName )
+				"friendName": "Plus-one of " + $scope.guestName,
+				"diningTableId": null,
 				"constraints": []
 			};
 			$scope.guests.push(newGuest);

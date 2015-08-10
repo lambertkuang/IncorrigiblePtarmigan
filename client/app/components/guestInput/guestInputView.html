@@ -1,17 +1,48 @@
-<div ng-controller="guestInputCtrl">
-	<p>Say something</p>
-  <form name="guestInputForm">
+<div class="container" ng-controller="guestInputCtrl">
+	<div class="row">
+	  <form name="guestInputForm" role="form">
+	    <div class="col-lg-6">
 
-	  <input ng-model="guestName" type="text" class="form-control" placeholder="Your Guest's Name">
+				<h2 class="headline">Add Guest</h2>
 
-	  <input ng-model="friendName" type="text" class="form-control" placeholder="Your Guest's Plus-One">
+			  <label for="guest-name">Guest Name</label>
+				<div class="input-group name-field">
+				  <input ng-model="guestName" type="text" class="form-control" id="guest-name" placeholder="Your Guest's Name">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+			  </div>
 
-	  <div>
-		  <button ng-click="addGuest()">Add Next Guest</button>
-	  </div>
-	  <div>
-		  <button ng-click="addAllGuests()">Done</button>
-	  </div>
+				<!-- Only show plus-one field if guest name field is not empty -->
+			  <div ng-show="guestName">
+				  <label for="friend-name">Guest's Plus-One</label>
+					<div class="form-group">
+					  <input ng-model="friendName" type="text" class="form-control" id="friend-name" placeholder="Your Guest's Plus-One">
+				  </div>
+			  </div>
 
-  </form>
+				<!-- Indicate that the Guest Name field is required -->
+				<div class="well well-sm"><span class="glyphicon glyphicon-asterisk"></span> Required Field</div>
+
+			  <div>
+				  <button class="btn btn-default add-next-guest" ng-click="addGuest()">Continue Adding Guests</button>
+			  </div>
+
+			  <div>
+				  <button class="btn btn-default" ng-click="addAllGuests()">Done Adding Guests</button>
+			  </div>
+
+			  <div>
+			  <h3 ng-show="guests.length > 0">Guests Added in this Session</h3>
+			    <div class="highlight-box">
+			    <!-- TODO: Add logic to show that a plus-one guest is the plus-one of a primary guest -->
+					  <div class="input-list" ng-repeat="guest in guests | orderBy: 'guestName' ">
+					    {{guest.guestName}} 
+					    <!-- <p ng-show="guest.friendName contains 'Plus-one of' ">guest.friendName</p> -->
+					  </div>
+				  </div>
+			  </div>
+
+		  </div>
+
+	  </form>
+  </div>
 </div>
