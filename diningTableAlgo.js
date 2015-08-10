@@ -26,7 +26,7 @@ var makeDiningTables = function(guests, numPerTable) {
   var anyFriends = true;
 
   // go through the tables
-  // TODO: if too many friends, needs to repeat through all the tables again
+  // TODO: when there are too many couples, it will currently add them to the same table even if it exceeds the size
   while (anyFriends) {
     for (var tableIndex = 0; tableIndex < allTables.length; tableIndex++) {
       // find guests with friends
