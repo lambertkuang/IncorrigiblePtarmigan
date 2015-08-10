@@ -1,0 +1,32 @@
+body {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.headline {
+	color: #218C8D;
+}
+
+div .name-field {
+	margin-bottom: 10px;
+}
+
+div .input-list {
+	margin-top: 10px;
+}
+
+.highlight-box {
+	background-color: #FFFFCC;
+	text-indent: 10px;
+}
+
+.add-next-guest {
+	background-color: #6CCECB;
+	margin-bottom: 10px;
+}
+
+.done-adding {
+	background-color: #EF7126;
+	margin-bottom: 10px;
+	font-weight: bold;
+}

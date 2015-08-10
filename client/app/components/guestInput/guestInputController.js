@@ -1,3 +1,6 @@
+// TODO: Need to validate that the guest name is unique, so you can't add duplicate +1's 
+// TODO: Do not allow empty strings to be submitted for the guestName input
+
 angular.module('seatly.guestInput', [])
 .controller('guestInputCtrl', function($scope, guestInputFactory){
 	$scope.guests = [];
@@ -19,7 +22,7 @@ angular.module('seatly.guestInput', [])
 			var newGuest = {
 				"guestName": $scope.friendName,
 				"friendName": $scope.guestName,
-				"diningTableId": -1,
+				"diningTableId": null,
 				"constraints": []
 			};
 			$scope.guests.push(newGuest);

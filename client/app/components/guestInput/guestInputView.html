@@ -1,17 +1,43 @@
-<div ng-controller="guestInputCtrl">
-	<p>Say something</p>
-  <form name="guestInputForm">
+<div class="container" ng-controller="guestInputCtrl">
+	<div class="row">
+	  <form name="guestInputForm" role="form">
+	    <div class="col-lg-6">
 
-	  <input ng-model="guestName" type="text" class="form-control" placeholder="Your Guest's Name">
+				<h2 class="headline">Add Guest</h2>
 
-	  <input ng-model="friendName" type="text" class="form-control" placeholder="Your Guest's Plus-One">
+				<!-- Indicate that the Guest Name field is required -->
+				<div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
 
-	  <div>
-		  <button ng-click="addGuest()">Add Next Guest</button>
-	  </div>
-	  <div>
-		  <button ng-click="addAllGuests()">Done</button>
-	  </div>
+			  <label for="guest-name">Guest Name</label>
+				<div class="input-group name-field">
+				  <input ng-model="guestName" type="text" class="form-control" id="guest-name" placeholder="Your Guest's Name">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+			  </div>
 
-  </form>
+			  <label for="friend-name">Guest's Plus-One</label>
+				<div class="form-group">
+				  <input ng-model="friendName" type="text" class="form-control" id="friend-name" placeholder="Your Guest's Plus-One">
+			  </div>
+
+			  <div>
+				  <button class="btn btn-default add-next-guest" ng-click="addGuest()">Continue Adding Guests</button>
+			  </div>
+
+			  <div>
+				  <button class="btn btn-default done-adding" ng-click="addAllGuests()">Done Adding Guests</button>
+			  </div>
+
+			  <div>
+			  <h3 ng-show="guests.length>0">Guests Added in this Session</h3>
+			    <div class="highlight-box">
+					  <div class="input-list" ng-repeat="guest in guests | orderBy: 'guestName' ">
+					    {{guest.guestName}}
+					  </div>
+				  </div>
+			  </div>
+
+		  </div>
+
+	  </form>
+  </div>
 </div>
