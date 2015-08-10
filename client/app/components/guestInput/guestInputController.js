@@ -21,6 +21,10 @@ angular.module('seatly.guestInput', [])
 		if($scope.friendName){
 			var newGuest = {
 				"guestName": $scope.friendName,
+				// NOTE: We may want to change the logic here. User does not 'count' the plus-one of a primary guest
+				// in the same way as she would a primary guest. A plus-one of a primary guest thus should not have
+				// their own plus-one property. Either this property should be blank, or set to a value that indicates
+				// that this guest is a plus-one (i.e. friendName: "Plus-one of " + $scope.guestName )
 				"friendName": $scope.guestName,
 				"diningTableId": null,
 				"constraints": []

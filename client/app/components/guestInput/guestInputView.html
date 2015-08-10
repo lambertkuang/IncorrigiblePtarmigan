@@ -17,7 +17,7 @@
 					<div class="form-group">
 					  <input ng-model="friendName" type="text" class="form-control" id="friend-name" placeholder="Your Guest's Plus-One">
 				  </div>
-			  </div>J
+			  </div>
 
 				<!-- Indicate that the Guest Name field is required -->
 				<div class="well well-sm"><span class="glyphicon glyphicon-asterisk"></span> Required Field</div>
@@ -33,8 +33,9 @@
 			  <div>
 			  <h3 ng-show="guests.length>0">Guests Added in this Session</h3>
 			    <div class="highlight-box">
+			    <!-- TODO: Add logic to show that a plus-one guest is the plus-one of a primary guest -->
 					  <div class="input-list" ng-repeat="guest in guests | orderBy: 'guestName' ">
-					    {{guest.guestName}}
+					    {{guest.guestName}} 
 					  </div>
 				  </div>
 			  </div>
