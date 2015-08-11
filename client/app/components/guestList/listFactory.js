@@ -3,6 +3,7 @@ angular.module('seatly.list')
   var viewGuests = function() {
     return $http({
       method: 'GET',
+      // change this to /tables/get
       url: '/create'
     });
   };
