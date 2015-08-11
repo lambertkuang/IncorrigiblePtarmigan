@@ -1,20 +1,41 @@
 <div ng-controller='listController'>
-  <h1 class='headline'>All Guests</h1>
-  <div class='listview'>
-    <h5>Number of Guests: {{ guests.data.length }} </h5>
-    <table class='guestList'>
-      <tr>
-        <th>Guest</th>
-        <th>Table</th>
-        <th>Plus-One</th>
-        <th>People They Shouldn't Sit Near</th>
-      </tr>
-      <tr ng-repeat="guest in guests.data">
-        <td>{{ guest.guestName }}</td>
-        <td>{{ guest.diningTableId }}</td>
-        <td>{{ guest.friendName }}</td>
-        <td>{{ guest.constraints }}</td>
-      </tr>
-    </table>
+  <div id='list'>
+    <h1 class='headline'>All Guests</h1>
+    <div class='listview'>
+      <h5>Number of Guests: {{ guests.data.length }} </h5>
+      <table class='guestList'>
+        <tr>
+          <th>Guest</th>
+          <th>Table</th>
+          <th>Plus-One</th>
+          <th>People They Shouldn't Sit Near</th>
+        </tr>
+        <tr ng-click='redirect(guest.guestName)' ng-repeat="guest in guests.data">
+          <td>{{ guest.guestName }}</td>
+          <td>{{ guest.diningTableId }}</td>
+          <td>{{ guest.friendName }}</td>
+          <td>{{ guest.constraints }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
+
+  <div id='edit'>
+    <h1 class='headline'>Edit Guest Information</h1>
+    <form name='editGuestForm'>
+      <div>
+        <input ng-model='guest.guestName' placeholder="this guest's name">
+      </div>
+      <div>
+        <input ng-model='guest.friendName' placeholder="this guest's plus-one">
+      </div>
+      <div>
+        <input ng-model='guest.constraints' placeholder='any guests this guest should not sit with, separated by commas'>
+      </div>
+      <div>
+        Dining Table ID: {{guest.diningTableId}}
+      </div>
+      <button ng-click='editGuest()'>Done Editing Guest</button>
+    </form>
+    </d
 </div>
