@@ -190,6 +190,18 @@ module.exports = function(app, express) {
     });
   });
 
+  // retrieve one guest
+  app.post('/one', function(req, res) {
+    Guest.findOne({'guestName': req.body.name}, function(err, guest) {
+      if (err) {
+        console.log(196, err);
+        res.send(500);
+        return;
+      }
+      res.send(201, guest);
+    });
+  });
+
 // edit guest properties
   app.put('/create', function(req, res){
     var changes = req.body.changes;
