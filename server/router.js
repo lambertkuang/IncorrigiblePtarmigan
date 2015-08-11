@@ -161,6 +161,8 @@ module.exports = function(app, express) {
     });
   });
 
+  // returns a matrix of dining tables (an array of arrays; the nested
+  // arrays are the dining tables, full of guest objects)
   app.get('/tables/get', function(req, res) {
     DiningTable.find(function(err, diningTables) {
       if (err) return console.log(err);
@@ -192,20 +194,25 @@ module.exports = function(app, express) {
 
     // test object: { "changes": [ "Jennie Kim", { "guestName": "JK", "friendName": "Eric"} ]}
     Guest.findOne({ guestName: changes[0]}, function(err, guest){
-      console.log("inside findOne");
+      console.log("inside findOne", 197);
       if(err){
+        // if there's an error
         res.send(400);
-      }
-      for(var key in changes[1]) {
-        guest[key] = changes[1][key];
-      }
-      guest.save(function(err){
-        if(err) {
-          res.send(400);
-        } else {
-          res.send(200);
+      } else if (!guest) {
+        // if the guest hasn't been found
+        res.send(500);
+      } else {
+        for(var key in changes[1]) {
+          guest[key] = changes[1][key];
         }
-      });
+        guest.save(function(err){
+          if(err) {
+            res.send(400);
+          } else {
+            res.send(200);
+          }
+        });
+      }
     });
   });
 
