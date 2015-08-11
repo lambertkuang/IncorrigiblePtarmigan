@@ -65,6 +65,7 @@ angular.module('seatly.list', [])
         diningTableId: null
       }
       $scope.inEdit = false;
+      $scope.init();
       return res;
     });
   };
