@@ -1,14 +1,14 @@
 <div class="container" ng-controller="guestInputCtrl">
-	<div class="row">
-	  <form name="guestInputForm" role="form">
+	<div ng-hide="showConstraints">
+	  <form name="guestInputForm" role="form" novalidate>
 	    <div class="col-lg-6">
 
 				<h2 class="headline">Add Guest</h2>
 
+				<!-- TODO: Make the required message go away at the end of the seesion -->
 			  <label for="guest-name">Guest Name</label>
-				<div class="form-group">
-				  <input ng-model="guestName" type="text" class="form-control" id="guest-name" placeholder="Your Guest's Name" required>
-				</div>
+				  <input name="guestname" ng-model="guestName" type="text" class="form-control" id="guest-name" placeholder="Your Guest's Name" required ng-class="{'error': guestInputForm.$dirty}"/>
+				
 
 				<!-- Only show plus-one field if guest name field is not empty -->
 			  <div ng-show="guestName">
@@ -23,7 +23,7 @@
 			  </div>
 
 			  <div>
-				  <button class="btn btn-default" ng-click="addAllGuests()">Done Adding Guests</button>
+				  <button class="btn btn-default" ng-click="showConstraintsView()">Done Adding Guests</button>
 			  </div>
 
 			  <div>
@@ -41,20 +41,44 @@
 	  </form>
   </div>
 
-  <div class="row">
-  <h3>Guest can't sit near</h3>
-  	  <form name="constraintForm" role="form">
+  <!-- Constraint View -->
+  <div ng-show="showConstraints">
+	  <div class="row">
+	  <h3>Add Constraints</h3>
+	  </div>
 
-  	  <label for="enemy">Enemy Name</label>
-				<div class="form-group">
-				  <input ng-model="enemy" type="text" class="form-control" id="enemy-name" placeholder="Enemy Name">
-				</div>
+	  <div class="row">
+	  	<div class="col-md-6">
+		    <ul>
+		  	  <label>Guest Name
+		  	    <select ng-model="guest" ng-options="guest.guestName for guest in guests">
+			  	  	<option value="">-- choose guest --</option>
+			  	  </select>
+		  	  </label>
+		    </ul>
+		  </div>
+		  <div class="col-md-6">
+		  <ul>
+		  	<label>Enemy Name
+		  	  <select ng-model="enemy" ng-options="guest.guestName for guest in guests">
+		  	  	<option value="">-- choose enemy --</option>
+		  	  </select>
+		  	</label>
+		  </ul>
+		  </div>
+	  </div>
 
-				 <div>
-				  <button class="btn btn-default" ng-click="addGuest()">Add Constraint</button>
-			  </div>
+	  <div class="row">
+	  	<div class="col-md-3">
+	  		<button class="btn btn-default" ng-click="addConstraint()">Update and Add Another Constraint</button>
+	  	</div>
+	  </div>
 
-  	  </form>
+	  <div class="row">
+	  	<div class="col-md-3">
+	  		<button class="btn btn-default" ng-click="addAllGuests()">Done! Get My Chart!</button>
+	  	</div>
+	  </div>
   </div>
 
 </div>

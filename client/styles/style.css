@@ -3,6 +3,10 @@ body {
 	margin-bottom: 50px;
 }
 
+li {
+	text-decoration: none;
+}
+
 .headline {
 	color: #218C8D;
 }
@@ -30,7 +34,7 @@ div .input-list {
 	font-weight: bold;
 }
 
-form, h1, .link {
+h1, .link {
 	padding-bottom: 10px;
 	text-align: center;
 }

@@ -9,6 +9,7 @@ angular.module('seatly.guestInput', [])
 	$scope.friendName = "";
 	$scope.constraints = [];
 	$scope.enemy = "";
+	$scope.showConstraints = false;
 
 	$scope.addGuest = function(){
 
@@ -19,14 +20,12 @@ angular.module('seatly.guestInput', [])
 			"constraints": []
 		};
 
-		var constraints = guest.constraints;
-		if($scope.enemy) {
-			constraints.push($scope.enemy);
-		}
+		// var constraints = guest.constraints;
+		// if($scope.enemy) {
+		// 	constraints.push($scope.enemy);
+		// }
 
 		$scope.guests.push(guest);
-
-
 
 		if($scope.friendName){
 			var newGuest = {
@@ -40,7 +39,6 @@ angular.module('seatly.guestInput', [])
 
 		$scope.guestName = "";
 		$scope.friendName = "";
-		$scope.enemy = "";
 	};
 
 	$scope.addAllGuests = function(){
@@ -53,24 +51,46 @@ angular.module('seatly.guestInput', [])
     return guestInputFactory.addAllGuests(result);
 	};
 
-	$scope.addConstraints = function(guestname, enemy){
-		var guests = $scope.guests;
-		var guest;
-		// find the guest in the guests array by their guestname
-		for(var i = 0; i < guests.length; i++){
-			if(guests[i][guestName] === guestName){
-				guest = guests[i];
-				// return;
-			}
-		}
-		// set constraints for our target guest
-		console.log(guests);
-		guest[constraints] = constraints;
-		constraints.push(enemy);
-		console.log(enemy + " pushed to " + guest[guestname] + " constraints");
+	$scope.showConstraintsView = function(){
+		// called on button click to show the constraints view
+		$scope.showConstraints = true;
+	};
+
+	$scope.addConstraint = function(){
+		// For 2 dropdowns: Guest in col 1 is 'guest', guest in col 2 is 'enemy'
+    // access the constraints array of the guest
+		var guestConstraints = $scope.guestName.constraints;
+		// push the name of the guest in the second column
+		guestConstraints.push($scope.enemy.guestName);
+		
+		// To create bi-directional constraint listings
+		// access the constraints array of the enemy
+		var enemyConstraints = $scope.enemy.constraints;
+		// push guestName to the enemy constraint array
+		enemyConstraints.push($scope.guestName.guestName);
+
+		// console.log("guest.constraints", $scope.guestName.constraints);
+		// console.log("enemy.constraints", $scope.enemy.constraints);
+    // console.log("enemy", $scope.enemy);
+		// console.log("guestName", $scope.guestName.guestName);
 	};
 
 });
+
+		// var guests = $scope.guests;
+		// var guest;
+		// // find the guest in the guests array by their guestname
+		// for(var i = 0; i < guests.length; i++){
+		// 	if(guests[i][guestName] === guestName){
+		// 		guest = guests[i];
+		// 		// return;
+		// 	}
+		// }
+		// // set constraints for our target guest
+		// console.log(guests);
+		// guest[constraints] = constraints;
+		// constraints.push(enemy);
+		// console.log(enemy + " pushed to " + guest[guestname] + " constraints");
 
 // NOT NEEDED HERE -- the below logic describes edit capabilities, saving for info only
 		// // attach a changes object to guest
