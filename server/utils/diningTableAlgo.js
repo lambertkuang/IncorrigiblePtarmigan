@@ -53,7 +53,7 @@ exports.makeDiningTables = function(guests, numPerTable) {
         currTable = diningTables[tableIndex];
         // console.log('dining Tables',diningTables);
 
-        // TODO: edge case where it's going to exceed guest by one
+        // TODO: edge case where it's going to exceed guest by one (odd number of seats per tables)
         // if we can add this guest, add it and also add the friend
         if(currTable.length < numPerTable && canAddFriend(currTable, currCouple[0], currCouple[1])) {
           currTable.push(currCouple[0]);
@@ -65,7 +65,7 @@ exports.makeDiningTables = function(guests, numPerTable) {
       }
       // If we get here and we haven't added any guests, we need to break out of the while loop
       if(addedCouple === false) {
-        console.log('We cant add this couple -- remove more constraints');
+        console.log('We cant add this couple -- remove constraints or change table size');
         // TODO: surface error to the user
         couples.unshift(currCouple);
         // try again adding couples without respecting constraints
