@@ -1,10 +1,12 @@
 angular.module('seatly.list', [])
 .controller('listController',['$scope', 'List', function($scope, List) {
 
+  // all the guests; for use in list
   $scope.guests = [];
 
   // hardcoded guest for now; will change when 
   // fauxRedirect is working
+  // the guest currently being edited
   $scope.guest = {
     guestName: 'daft',
     friendName: 'friend!',
@@ -12,6 +14,11 @@ angular.module('seatly.list', [])
     diningTableId: 3
   };
 
+  // this will toggle based on the state we're in:
+  // list view or edit. It's tied to ng-hide.
+  $scope.inEdit = false;
+
+  // render all of the guests in the table
   $scope.init = function() {
     List.viewGuests()
     .then(function(allGuests) {
@@ -21,18 +28,23 @@ angular.module('seatly.list', [])
     .catch(function(err) {
       console.log(new Error(err));
     });
-  }
+  };
 
+  // find a particular guest and go into edit view
   $scope.fauxRedirect = function(guestName) {
-    Link.editGuest(guestName)
+    List.getGuest(guestName)
     .then(function(guest) {
+      $scope.guest = guest;
       // hide the list view and unhide the edit view
+      $scope.inEdit = true;
     })
     .catch(function(err) {
       console.log(new Error(err));
     });
   };
 
+  // save the edited information to db
+  // and go into list view
   $scope.editGuest = function()  {
     // format the information in the way the server expects
     // TODO only provide the information that has changed
@@ -41,7 +53,7 @@ angular.module('seatly.list', [])
     };
 
     // pass object through to factory
-    return Link.editGuest(obj)
+    return List.editGuest(obj)
     // no matter if error or not, clear fields
     .finally(function(res) {
       // TODO redirect with $location to guestListView
@@ -51,6 +63,7 @@ angular.module('seatly.list', [])
         contraints: [],
         diningTableId: null
       }
+      $scope.inEdit = false;
       return res;
     });
   };
