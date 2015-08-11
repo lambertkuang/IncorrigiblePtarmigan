@@ -34,7 +34,8 @@ angular.module('seatly.list', [])
   $scope.fauxRedirect = function(guestName) {
     List.getGuest(guestName)
     .then(function(guest) {
-      $scope.guest = guest;
+      console.log(guest.data);
+      $scope.guest = guest.data;
       // hide the list view and unhide the edit view
       $scope.inEdit = true;
     })
