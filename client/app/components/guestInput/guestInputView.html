@@ -1,24 +1,3 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Seatly</a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#/edit">Edit List</a></li>
-        <li><a href="#/guestinput">Create List</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</div>
-
-
 <div class="container" ng-controller="guestInputCtrl">
 	<div class="row">
 	  <form name="guestInputForm" role="form">
@@ -29,8 +8,7 @@
 			  <label for="guest-name">Guest Name</label>
 				<div class="form-group">
 				  <input ng-model="guestName" type="text" class="form-control" id="guest-name" placeholder="Your Guest's Name" required>
-				 <!--  <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
- -->			  </div>
+				</div>
 
 				<!-- Only show plus-one field if guest name field is not empty -->
 			  <div ng-show="guestName">
@@ -39,9 +17,6 @@
 					  <input ng-model="friendName" type="text" class="form-control" id="friend-name" placeholder="Your Guest's Plus-One">
 				  </div>
 			  </div>
-
-				<!-- Indicate that the Guest Name field is required -->
-				<!-- <div class="well well-sm"><span class="glyphicon glyphicon-asterisk"></span> Required Field</div> -->
 
 			  <div>
 				  <button class="btn btn-default add-next-guest" ng-click="addGuest()">Continue Adding Guests</button>
@@ -57,7 +32,6 @@
 			    <!-- TODO: Add logic to show that a plus-one guest is the plus-one of a primary guest -->
 					  <div class="input-list" ng-repeat="guest in guests | orderBy: 'guestName' ">
 					    {{guest.guestName}} 
-					    <!-- <p ng-show="guest.friendName contains 'Plus-one of' ">guest.friendName</p> -->
 					  </div>
 				  </div>
 			  </div>
