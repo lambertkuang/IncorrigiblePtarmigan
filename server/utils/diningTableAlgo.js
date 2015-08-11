@@ -1,6 +1,6 @@
 // input: an array of guest objects, max number of guests per table
-// only dealing with +1's for now
-
+// Can deal with +1s and constraints
+// Output: array of arrays where each subarray represents a diningtable populated by elements that are guest objects
 /*
 EDGE cases where our algorithm could be improved:
 - if table has odd number of seats and there are more couples than we can fit, it's going to exceed number of seats per table
@@ -20,6 +20,10 @@ exports.makeDiningTables = function(guests, numPerTable) {
     }
   };
 
+  // this functions testing to see if there are any constraints between guests friend1 (and optional friend2) 
+  // and the guests already sitting at the diningtable
+  // input: a dining table and a guest object (and an optional second guest object expected to be a friend of the first guest object)
+  // output: true or false
   var canAddFriend = function(diningTable, friend1, friend2) {
     var result = true;
 
@@ -40,7 +44,7 @@ exports.makeDiningTables = function(guests, numPerTable) {
 
 
   // this function takes an array of couples (as tuples) and a matrix of dining Tables (array of array). It modifies the diningTables array by pushing
-  // guests (as guest objects) into the tables
+  // guests (as guest objects) into the tables. 
   var addCouplesToTables = function(couples, diningTables, respectConstraints) {
     if(respectConstraints === undefined) respectConstraints = true; 
 
