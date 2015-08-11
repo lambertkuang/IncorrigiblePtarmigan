@@ -4,12 +4,18 @@ angular.module('seatly.auth', [])
 .controller('AuthController', function($scope, $window, $location, Auth) {
   $scope.user = {};
 
+  // ANOTHER developer boolean!
+  // same deal as in app.module.js
+  var developer = true;
+
   $scope.signin = function() {
     Auth.signin($scope.user)
       .then(function(token) {
-        $window.localStorage.setItem('com.seatly', token);
+        if (!developer) {
+          $window.localStorage.setItem('com.seatly', token);
+        }
         // maybe need to update path once user signs in
-        $location.path('/');
+        $location.path('/guestinput');
       })
       .catch(function(error) {
         console.error(error);
@@ -19,9 +25,11 @@ angular.module('seatly.auth', [])
   $scope.signup = function() {
     Auth.signup($scope.user)
       .then(function(token) {
-        $window.localStorage.setItem('com.seatly', token);
+        if (!developer) {
+          $window.localStorage.setItem('com.seatly', token);
+        }
         // maybe need to update path once user signs in
-        $location.path('/');
+        $location.path('/guestinput');
       })
       .catch(function(error) {
         console.error(error);

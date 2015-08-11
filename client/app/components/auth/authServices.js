@@ -9,7 +9,7 @@ angular.module('seatly.authServices', [])
     var signin = function(user) {
       return $http({
         method: 'POST',
-        url: '/api/user/signin',
+        url: '/user/signin',
         data: user
       })
       .then(function(resp) {
@@ -20,7 +20,7 @@ angular.module('seatly.authServices', [])
     var signup = function(user) {
       return $http({
         method: 'POST',
-        url: '/api/user/signup',
+        url: '/user/signup',
         data: user
       })
       .then(function(resp) {

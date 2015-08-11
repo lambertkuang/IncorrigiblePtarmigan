@@ -24,7 +24,7 @@ module.exports = function(app, express) {
 
 // SIGN UP USER
 // this is callback system, should refactor to promises
-  app.post('/api/user/signup', function(req, res) {
+  app.post('/user/signup', function(req, res) {
     console.log('signup begins');
     // check to see if the username already exists:
     // .count is a method that passes an err and number into a callback
@@ -63,22 +63,44 @@ module.exports = function(app, express) {
   }); // end of post to signup
 
   // SIGN IN USER
-  app.post('/signin', function(req, res) {
-    console.log('signin begins');
+  app.post('/user/signin', function(req, res) {
+    console.log('signin begins with', req.body);
     // check to make sure the user exists
-    User.findOne({username: req.body.username}, function(err, user) {
+    return User.findOne({username: req.body.username}, function(err, user) {
       if (err) {
         console.log(71, new Error(err));
         res.end();
+        return;
       } else {
         // check the salted passwords
-        res.end(JSON.stringify(user));
+        if (!user) {
+          res.end('no match for username');
+          return;
+        } else {
+          user.comparePassword(req.body.password)
+            .then(function(isMatch) {
+              if (!isMatch) {
+                res.end('wrong password; please try again');
+              } else {
+                // TODO: here we'll need to pass 'resp' back to the signin
+                // auth services, but I'm unsure what 'resp' is, so I'm just
+                // passing along the boolean.
+                return(isMatch);
+              }
+            })
+            .catch(function(err) {
+              console.log(90, err);
+              res.end(err);
+              return;
+            });
+          res.end('completed post to signin');
+        } 
       }
     }); // end of findOne
   }); // end post to signin
 
   // developer-centered route to get all users in database
-  app.get('/api/user/signup', function(req, res) {
+  app.get('/user/signup', function(req, res) {
     User.find({}, function(err, users) {
       if (err) console.log(err);
       res.end(JSON.stringify(users));
