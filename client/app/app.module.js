@@ -4,6 +4,7 @@ angular.module('seatly', [
 	'seatly.edit',
 	// 'seatly.start',
 	// 'seatly.constraintInput',
+  'seatly.list',
   'ngRoute'
 ])
   .config(function($routeProvider, $locationProvider, $httpProvider){
@@ -22,6 +23,10 @@ angular.module('seatly', [
       //   controller: 'editController',
       //   controllerAs: 'edit'
       // })
+      .when('/list', {
+        templateUrl: 'app/components/guestList/listView.html',
+        controller: 'listController'
+      })
       .when('/edit', {
         templateUrl: 'app/components/edit/editView.html',
         controller: 'editController',
