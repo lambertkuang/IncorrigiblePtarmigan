@@ -1,11 +1,12 @@
 angular.module('seatly.list', [])
 .controller('listController',['$scope', 'List', function($scope, List) {
+  // change scope variables to center around
+  // a list of tables with guests in those tables
+
 
   // all the guests; for use in list
   $scope.guests = [];
 
-  // hardcoded guest for now; will change when 
-  // fauxRedirect is working
   // the guest currently being edited
   $scope.guest = {};
 
@@ -16,6 +17,7 @@ angular.module('seatly.list', [])
   // render all of the guests in the table
   $scope.init = function() {
     List.viewGuests()
+    // this function will get a list of tables under .data
     .then(function(allGuests) {
       $scope.guests = allGuests;
       console.log('bound data');
