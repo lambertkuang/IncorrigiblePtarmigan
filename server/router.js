@@ -187,7 +187,7 @@ module.exports = function(app, express) {
   });
 
 // edit guest properties
-  app.put('/edit', function(req, res){
+  app.put('/create', function(req, res){
     var changes = req.body.changes;
 
     // test object: { "changes": [ "Jennie Kim", { "guestName": "JK", "friendName": "Eric"} ]}

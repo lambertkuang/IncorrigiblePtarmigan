@@ -40,4 +40,21 @@
 
 	  </form>
   </div>
+
+  <div class="row">
+  <h3>Guest can't sit near</h3>
+  	  <form name="constraintForm" role="form">
+
+  	  <label for="enemy">Enemy Name</label>
+				<div class="form-group">
+				  <input ng-model="enemy" type="text" class="form-control" id="enemy-name" placeholder="Enemy Name">
+				</div>
+
+				 <div>
+				  <button class="btn btn-default" ng-click="addGuest()">Add Constraint</button>
+			  </div>
+
+  	  </form>
+  </div>
+
 </div>
