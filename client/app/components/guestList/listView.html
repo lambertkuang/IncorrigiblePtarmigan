@@ -1,5 +1,5 @@
 <div ng-controller='listController'>
-  <div id='list'>
+  <div ng-hide='inEdit' id='list'>
     <h1 class='headline'>All Guests</h1>
     <div class='listview'>
       <h5>Number of Guests: {{ guests.data.length }} </h5>
@@ -10,17 +10,17 @@
           <th>Plus-One</th>
           <th>People They Shouldn't Sit Near</th>
         </tr>
-        <tr ng-click='redirect(guest.guestName)' ng-repeat="guest in guests.data">
-          <td>{{ guest.guestName }}</td>
-          <td>{{ guest.diningTableId }}</td>
-          <td>{{ guest.friendName }}</td>
-          <td>{{ guest.constraints }}</td>
+        <tr ng-repeat="guest in guests.data">
+          <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.guestName }}</td>
+          <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.diningTableId }}</td>
+          <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.friendName }}</td>
+          <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.constraints }}</td>
         </tr>
       </table>
     </div>
   </div>
 
-  <div id='edit'>
+  <div ng-hide='!inEdit' id='edit'>
     <h1 class='headline'>Edit Guest Information</h1>
     <form name='editGuestForm'>
       <div>

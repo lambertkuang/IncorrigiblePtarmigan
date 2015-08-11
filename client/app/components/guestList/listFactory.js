@@ -8,10 +8,13 @@ angular.module('seatly.list')
   };
 
   var getGuest = function(guestName) {
-    $http({
-      method: 'POST'
+    return $http({
+      method: 'POST',
+      url: '/one',
+      data: guestName
     }).then(function(guest) {
-
+      console.log('---------->', guest);
+      return guest;
     })
     .catch(function(err) {
       console.log(err);
