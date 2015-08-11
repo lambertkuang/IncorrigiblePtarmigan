@@ -1,5 +1,6 @@
 /* create and export diningTbl schema and model */
 var mongoose = require('mongoose');
+// can probably remove seatsPerTable
 var DiningTableSchema = mongoose.Schema({
   diningTablename: String,
   guestsAtTable: Array,
@@ -14,6 +15,6 @@ module.exports = DiningTables;
 
 
 // DiningTablename
-// DT id 
+// DT id
 // guest Array
 // number of seats

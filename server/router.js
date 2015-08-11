@@ -5,8 +5,8 @@ var User = require('../app-db/users/userModel');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var path = require('path');
-
-
+var DiningTable = require('../app-db/diningTbl/diningTblModel');
+var algo = require('./utils/diningTableAlgo');
 
 module.exports = function(app, express) {
   app.use(morgan('dev'));
@@ -76,6 +76,47 @@ module.exports = function(app, express) {
     res.send(200);
   });
 
+  // This will use the sorting algorithm to arrange the list of guests into multiple dining tables
+  // Client will pass in numPerTable
+  app.post('/tables/sort', function(req, res) {
+    // remove current diningTables
+    DiningTable.find().remove(function(err) {
+      if (err) return console.log(err);
+    });
+    // expecting client to pass in a numPerTable
+    var numPerTable = req.body.numPerTable;
+    Guest.find(function(err, guests) {
+      var diningTables = algo.makeDiningTables(guests, numPerTable);
+      // loop through diningTables
+      diningTables.forEach(function(diningTable, index) {
+        var dt = new DiningTable({
+          diningTableName: index,
+          guestsAtTable: diningTable
+        });
+        dt.save(function(err, table) {
+          if (err) {
+            res.send(400);
+          } else {
+            console.log('Saved dining table');
+            res.send(200);
+          }
+        });
+      });
+    });
+  });
+
+  app.get('/tables/get', function(req, res) {
+    DiningTable.find(function(err, diningTables) {
+      if (err) return console.log(err);
+      console.log(diningTables);
+      if (!!diningTables) {
+        res.send(200, diningTables);
+      } else {
+        res.send(404);
+      }
+    });
+  });
+
 //retrieves all guests
   app.get('/create', function(req, res){
     Guest.find(function(err, guests){
@@ -109,6 +150,14 @@ module.exports = function(app, express) {
           res.send(200);
         }
       });
+    });
+  });
+
+  // drop guests
+  app.post('/users/clear', function(req, res) {
+    Guest.find().remove(function(err) {
+      if (err) return console.log(err);
+      res.send(200);
     });
   });
 
