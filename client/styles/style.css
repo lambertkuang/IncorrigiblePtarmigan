@@ -29,3 +29,16 @@ div .input-list {
 	margin-bottom: 10px;
 	font-weight: bold;
 }
+
+form, h1, .link {
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+.link {
+	margin-top: 20px;
+}
+
+.password {
+	margin: 5px 0 10px 0;
+}

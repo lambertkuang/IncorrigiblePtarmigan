@@ -1,9 +1,15 @@
 <div id="signin" ng-controller='AuthController'>
-  <h1>signin</h1>
-  <form name='signinForm' ng-submit='signin()'>
-    <input type="text" ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
+  <h1 class='headline'>signin</h1>
+  <form class='auth' name='signinForm' ng-submit='signin()'>
+    <div>
+      <input type="text" ng-model='user.username' placeholder='username'>
+    </div>
+    <div>
+      <input class='password' type="password" ng-model='user.password' placeholder='password'>
+    </div>
     <button>Sign in</button>
   </form>
-  <a href="#/signup">Don't have an account? <strong>Sign up</strong>...</a>
+  <div class='link'>
+    <a href="#/signup">Don't have an account? <strong>Sign up</strong>...</a>
+  </div>
 </div>
