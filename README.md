@@ -1,6 +1,6 @@
 # IncorrigiblePtarmigan
 
-# Project Name: Seating Chart / Seat Planner App
+# Project Name: Seatly
 
 App that lets users create socially harmonious seating charts for events, with weddings as our target use case. 
 
@@ -26,7 +26,7 @@ App that lets users create socially harmonious seating charts for events, with w
 
 ## Requirements
 
-- Backbone
+- Angular
 - jQuery
 - Underscore
 - Node
