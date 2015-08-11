@@ -18,11 +18,18 @@ module.exports = function(app, express) {
   //   res.send('Hellooooo WOOOOOORLD!!!!');
   // });
 
-// client POSTs signup and login
+////////////////////////////////////////////////////////
+//                 AUTHENTICATION                     //
+////////////////////////////////////////////////////////
+
+// SIGN UP USER
 // this is callback system, should refactor to promises
   app.post('/api/user/signup', function(req, res) {
-    // check to see if the username already exists
-    console.log('woooo signup begins');
+    console.log('signup begins');
+    // check to see if the username already exists:
+    // .count is a method that passes an err and number into a callback
+    // the number is the number of items in the table that match the
+    // object passed in as the first argument.
     User.count({username: req.body.username}, function(err, num) {
       // error querying database
       if (err) {
@@ -47,16 +54,43 @@ module.exports = function(app, express) {
               // otherwise, start session...
               // redirection is taken care of on client-side
               console.log('successfully saved new user');
-              res.end();
+              res.end('new user successfully saved');
             }
           }); // end of save
         }
       }
     }); // end of count
-  }); // end of post
+  }); // end of post to signup
+
+  // SIGN IN USER
+  app.post('/signin', function(req, res) {
+    console.log('signin begins');
+    // check to make sure the user exists
+    User.findOne({username: req.body.username}, function(err, user) {
+      if (err) {
+        console.log(71, new Error(err));
+        res.end();
+      } else {
+        // check the salted passwords
+        res.end(JSON.stringify(user));
+      }
+    }); // end of findOne
+  }); // end post to signin
+
+  // developer-centered route to get all users in database
+  app.get('/api/user/signup', function(req, res) {
+    User.find({}, function(err, users) {
+      if (err) console.log(err);
+      res.end(JSON.stringify(users));
+    });
+  });
+
+////////////////////////////////////////////////////////
+//                     GUEST INFO                     //
+////////////////////////////////////////////////////////
 
 // client-side posts a list of guests
-  app.post('/create', function(req,res) {
+  app.post('/create', function(req, res) {
     console.log('------------------------------');
     // console.log(req.body.guests[0]);
     console.log(req.body.guests);
@@ -161,14 +195,16 @@ module.exports = function(app, express) {
     });
   });
 
+////////////////////////////////////////////////////////
+//                  EVERYTHING ELSE                   //
+////////////////////////////////////////////////////////
+
 // wildcard route
   app.get('*', function(req, res){
-    res.sendFile(path.join(__dirname + '/client/auth/signupView.html'));
+    res.end('404 Not Found');
   });
 
-};
-
-
+}; // end export
 
 
 // detect the url route
