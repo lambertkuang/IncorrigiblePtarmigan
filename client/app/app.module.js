@@ -36,34 +36,24 @@ angular.module('seatly', [
     $httpProvider.interceptors.push('AttachTokens');
   })
   .factory('AttachTokens', function($window) {
-    if (!developer) {
-      var attach = {
-        request: function(obj) {
-          var jwt = $window.localStorage.getItem('com.seatly');
-          if (jwt) {
-            obj.headers['x-access-token'] = jwt;
-          }
-          obj.headers['Allow-Control-Allow-Origin'] = '*';
-          return obj;
+    var attach = {
+      request: function(obj) {
+        var jwt = $window.localStorage.getItem('com.seatly');
+        if (jwt) {
+          obj.headers['x-access-token'] = jwt;
         }
-      };
+        obj.headers['Allow-Control-Allow-Origin'] = '*';
+        return obj;
+      }
+    };
 
-      return attach;
-    }
+    return attach;
   })
   .run(function($rootScope, $location, Auth) {
-    if (!developer) {
-      $rootScope.$on('$routeChangeStart', function(evt, next, current) {
-        if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-          $location.path('/signin');
-        }
-      });
-    }
+    $rootScope.$on('$routeChangeStart', function(evt, next, current) {
+      if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+        $location.path('/signin');
+      }
+    });
   });
 
-
-// this is a boolean; developer or not;
-// that will toggle the authentication services
-// if you are a developer, it will not attach
-// tokens. Will need work.
-var developer = true;

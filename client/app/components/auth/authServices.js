@@ -1,4 +1,4 @@
-angular.module('seatly.authServices', [])
+angular.module('seatly.auth', [])
   .factory('Auth', function($http, $location, $window) {
     // it is responsible for authenticating our user
     // by exchanging the user's username and password
