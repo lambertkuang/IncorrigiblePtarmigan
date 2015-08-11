@@ -1,0 +1,18 @@
+<div ng-controller='listController'>
+  <h1 class='headline'>All Guests</h1>
+  <table class='guestList'>
+    <tr>
+      <th>Guest</th>
+      <th>Table</th>
+      <th>Plus-One</th>
+      <th>People They Shouldn't Sit Near</th>
+    </tr>
+    <tr ng-repeat="guest in guests">
+      <td>{{ guest.guestName }}</td>
+      <td>{{ guest.diningTableId }}</td>
+      <td>{{ guest.friendName }}</td>
+      <td>{{ guest.constraints }}</td>
+    </tr>
+  </table>
+
+</div>
