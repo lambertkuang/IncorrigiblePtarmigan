@@ -2,6 +2,15 @@
 // only dealing with +1's for now
 
 // remember to remove this line - used only for testing.
+
+/*
+EDGE cases where our algorithm could be improved:
+- if table has odd number of seats and there are more couples than we can fit, it's going to exceed number of seats per table
+- if it doesn't find a solution immediately, it's going to drop constraints and not test a different sorting
+- it should surface errors to the user (now it's logging to the console)
+- it's always going to sort in the same way (there is no shuffling of seats)
+*/
+
 var exports = {};
 
 exports.makeDiningTables = function(guests, numPerTable) {
