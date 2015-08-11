@@ -7,12 +7,7 @@ angular.module('seatly.list', [])
   // hardcoded guest for now; will change when 
   // fauxRedirect is working
   // the guest currently being edited
-  $scope.guest = {
-    guestName: 'daft',
-    friendName: 'friend!',
-    constraints: ['no', 'contraints', 'here'],
-    diningTableId: 3
-  };
+  $scope.guest = {};
 
   // this will toggle based on the state we're in:
   // list view or edit. It's tied to ng-hide.
@@ -49,6 +44,7 @@ angular.module('seatly.list', [])
   $scope.editGuest = function()  {
     // format the information in the way the server expects
     // TODO only provide the information that has changed
+    // TODO change information of any guest affected by this change
     var obj = {
       changes: [$scope.guest.guestName, $scope.guest]
     };

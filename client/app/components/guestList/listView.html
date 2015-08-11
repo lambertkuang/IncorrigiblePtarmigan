@@ -11,7 +11,7 @@
           <th>People They Shouldn't Sit Near</th>
         </tr>
         <tr ng-repeat="guest in guests.data">
-          <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.guestName }}</td>
+          <td class='row' ng-click='fauxRedirect(guest.guestName)'>{{ guest.guestName }}</td>
           <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.diningTableId }}</td>
           <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.friendName }}</td>
           <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.constraints }}</td>
