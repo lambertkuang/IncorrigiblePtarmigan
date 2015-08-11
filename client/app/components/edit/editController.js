@@ -2,7 +2,7 @@ angular.module('seatly.edit', [])
 .controller('editController', function($scope, Edit) {
   // TODO turn this into a real guest, not a hardcoded example
   $scope.guest = {
-    guestName: 'example',
+    guestName: 'daft',
     friendName: 'friend!',
     constraints: ['no', 'contraints', 'here'],
     diningTableId: 3
@@ -19,6 +19,7 @@ angular.module('seatly.edit', [])
     return Edit.editGuest(obj)
     // no matter if error or not, clear fields
     .finally(function(res) {
+      // TODO redirect with $location to guestListView
       $scope.guest = {
         guestName: '',
         friendName: '',

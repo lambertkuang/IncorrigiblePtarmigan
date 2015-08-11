@@ -114,8 +114,8 @@ module.exports = function(app, express) {
 // client-side posts a list of guests
   app.post('/create', function(req, res) {
     console.log('------------------------------');
-    // console.log(req.body.guests[0]);
-    console.log(req.body.guests);
+    console.log(req.body.guests[0]);
+    // console.log(req.body.guests);
     console.log('------------------------------');
     var guests = req.body.guests;
     for(var i =0; i<guests.length;i++){
@@ -166,7 +166,8 @@ module.exports = function(app, express) {
   app.get('/tables/get', function(req, res) {
     DiningTable.find(function(err, diningTables) {
       if (err) return console.log(err);
-      console.log(diningTables);
+      //console.log(diningTables);
+      console.log(170, 'diningTables gotten');
       if (!!diningTables) {
         res.send(200, diningTables);
       } else {
@@ -179,7 +180,8 @@ module.exports = function(app, express) {
   app.get('/create', function(req, res){
     Guest.find(function(err, guests){
       if(err) return console.log(err);
-      console.log(guests);
+      //console.log(guests);
+      console.log(184, 'guests gotten');
       if(guests) {
         res.send(200, guests);
       } else {
@@ -191,15 +193,17 @@ module.exports = function(app, express) {
 // edit guest properties
   app.put('/create', function(req, res){
     var changes = req.body.changes;
-
+    console.log('-------------->', changes);
     // test object: { "changes": [ "Jennie Kim", { "guestName": "JK", "friendName": "Eric"} ]}
     Guest.findOne({ guestName: changes[0]}, function(err, guest){
-      console.log("inside findOne", 197);
+      console.log("inside findOne", 197, guest);
       if(err){
         // if there's an error
+        console.log(202, err);
         res.send(400);
       } else if (!guest) {
         // if the guest hasn't been found
+        console.log(206, 'no guest');
         res.send(500);
       } else {
         for(var key in changes[1]) {
