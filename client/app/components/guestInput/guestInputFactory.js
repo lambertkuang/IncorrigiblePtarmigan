@@ -8,8 +8,17 @@ angular.module('seatly.guestInput')
 		});
 	};
 
+	var sortGuests = function(tableSize) {
+		return $http({
+			method: 'POST',
+			url: '/tables/sort',
+			data: {'numPerTable': tableSize}
+		});
+	}
+
 	return {
 		'addAllGuests': addAllGuests,
+		'sortGuests': sortGuests
 	};
 
 });

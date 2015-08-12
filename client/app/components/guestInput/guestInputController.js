@@ -9,6 +9,7 @@ angular.module('seatly.guestInput', [])
 	$scope.friendName = "";
 	$scope.enemy = "";
 	$scope.showConstraints = false;
+	$scope.peoplePerTable = null;
 
 	// add a guest and possible +1 to guests view
 	$scope.addGuest = function(){
@@ -36,16 +37,36 @@ angular.module('seatly.guestInput', [])
 
 	// POST all guests to database
 	$scope.addAllGuests = function(){
-		// add final constraints (non-duplicate functionality
-		// taken care of in addConstraint fn)
-		$scope.addConstraint();
+		// add final constraints if applicable
+		if ($scope.guest !== '' && $scope.guest !== '') {
+			$scope.addConstraint();
+		}
 
 		var result = {
 			guests: $scope.guests
 		};
 		console.dir($scope.guests);
-    // call a function in our factory with guest arr as input
-    return guestInputFactory.addAllGuests(result);
+
+    // POST all guests to database
+    guestInputFactory.addAllGuests(result)
+    .then(function() {
+    	guestInputFactory.sortGuests($scope.peoplePerTable)
+    	.then(function() {
+    		console.log('55, ready to redirect');
+    		// redirect to list page
+    	})
+    	.catch(function(err) {
+    		console.log(new Error(err));
+    	});
+    }) // end of then from addAllGuests
+    .catch(function(err) {
+    	console.log(new Error(err));
+    }); // end of catch from addAllGuests
+
+    // then find number of tables
+    // and POST to tables/sort to use algorithm
+    // when that's done, redirect user to 
+    // list page
 	};
 
 	// add final guest and switch views
