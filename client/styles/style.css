@@ -1,14 +1,31 @@
-body {
+.add-background {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.default {
 	margin-top: 50px;
 	margin-bottom: 50px;
+}
+
+li {
+	text-decoration: none;
+}
+
+.welcome {
+	color: #3B1E2D;
+	font-family: cursive; 
+	font-size: 50px;
+	text-align: center;
+	margin-bottom: 30px;
 }
 
 .headline {
 	color: #218C8D;
 }
 
-div .name-field {
-	margin-bottom: 10px;
+.constraints-header {
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 div .input-list {
@@ -20,9 +37,23 @@ div .input-list {
 	text-indent: 10px;
 }
 
+.color-border {
+	border-style: solid;
+	border-width: 3px;
+	border-color: #8EDC9D;
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+
 .add-next-guest {
 	background-color: #6CCECB;
 	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.plus-one {
+  margin-top: 20px;
+  color: #473E3F;
 }
 
 .done-adding {
@@ -30,9 +61,25 @@ div .input-list {
 	font-weight: bold;
 }
 
-form, h1, .link {
+.center-img {
+	text-align: center;
+  margin: 40px 0px 0px 0px;
+  border: 7px solid black;
+  border-radius: 20px;
+}
+
+h1, .link {
 	padding-bottom: 10px;
 	text-align: center;
+}
+
+.auth {
+	text-align: center;
+}
+
+.signin-and-up {
+	text-align: center;
+	margin-bottom: 10px;
 }
 
 .link {
@@ -40,5 +87,11 @@ form, h1, .link {
 }
 
 .password {
-	margin: 5px 0 10px 0;
+	margin: 0px 0 10px 0;
+}
+
+#auth-label {
+	text-align: left;
+	text-indent: 3px;
+	color: #473E3F;
 }

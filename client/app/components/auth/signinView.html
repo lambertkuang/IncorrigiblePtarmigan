@@ -1,15 +1,60 @@
-<div id="signin" ng-controller='AuthController'>
-  <h1 class='headline'>signin</h1>
-  <form class='auth' name='signinForm' ng-submit='signin()'>
-    <div>
-      <input type="text" ng-model='user.username' placeholder='username'>
-    </div>
-    <div>
-      <input class='password' type="password" ng-model='user.password' placeholder='password'>
-    </div>
-    <button>Sign in</button>
-  </form>
-  <div class='link'>
-    <a href="#/signup">Don't have an account? <strong>Sign up</strong>...</a>
+<div class="container default" id="signin" ng-controller='AuthController'>
+
+<style>
+  body {
+    background: url("../../assets/signin-img.jpg");
+    background-position: center;
+    margin-top: 40px;
+  }
+</style>
+
+<p class="welcome">Welcome Back to Seatly</p>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+      <div class="col-md-4 add-background">
+        <h1 class='headline signin-and-up'>Sign in</h1>
+      </div>
+    <div class "col-md-4"></div>  
   </div>
+
+  <form class='auth' name='signinForm' ng-submit='signin()'>
+    <div class="row">
+      <div class="col-md-4"></div>
+        <div class="col-md-4 add-background" id="auth-label">
+        <label for="username">Username: </label>
+          <input type="text" ng-model="user.username" placeholder="Required" class="form-control password">
+        </div>
+        <div class "col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 add-background" id="auth-label">
+      <label for="password">Password: </label>
+        <input class="form-control password" type="password" ng-model="user.password" placeholder="Required">
+      </div>
+      <div class "col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 add-background">
+        <button class="btn btn-info link">Sign in</button>
+      </div>
+      <div class "col-md-4"></div>
+    </div>
+
+  </form>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 add-background">
+      <p class='link'>
+        <a href="#/signup">Don't have an account? <strong>Sign up</strong>...</a>
+      </p>
+    </div>
+    <div class "col-md-4"></div>
+  </div>
+
 </div>
