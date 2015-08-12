@@ -33,7 +33,7 @@ angular.module('seatly', [
         controllerAs: 'guestInput'
       });
     // $locationProvider.html5Mode(true);
-    // $httpProvider.interceptors.push('AttachTokens');
+    $httpProvider.interceptors.push('AttachTokens');
   })
   .factory('AttachTokens', function($window) {
     var attach = {

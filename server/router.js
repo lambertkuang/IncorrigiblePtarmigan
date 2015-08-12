@@ -80,27 +80,29 @@ module.exports = function(app, express) {
         if (!user) {
           console.log('user--------->not exists', user);
           res.send(400, 'Username or password is incorrect');
-          // throw new Error('User does not exist');
           // res.end('no match for username');
           // return;
         } else if (user) {
           user.comparePassword(req.body.password)
             .then(function(isMatch) {
               if (!isMatch) {
-                res.end('wrong password; please try again');
+                console.log('password is not a match' + req.data);
+                res.send(400, 'wrong username or password; please try again');
+                // throw new Error('wrong password');
               } else {
+                console.log('password matches!');
                 // TODO: here we'll need to pass 'resp' back to the signin
                 // auth services, but I'm unsure what 'resp' is, so I'm just
                 // passing along the boolean.
                 var token = jwt.encode(user, 'secret');
                 res.json({token:token});
               }
-            })
-            .catch(function(err) {
-              console.log(90, err);
-              res.end(err);
-              return;
             });
+            // .catch(function(err) {
+            //   console.log(90, err);
+            //   res.end(err);
+            //   return;
+            // });
           res.end('completed post to signin');
         }
       }
