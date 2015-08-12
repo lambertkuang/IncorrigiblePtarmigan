@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var DiningTable = require('../app-db/diningTbl/diningTblModel');
 var algo = require('./utils/diningTableAlgo');
+// var Q = require('q');
+var jwt = require('jwt-simple');
 
 module.exports = function(app, express) {
   app.use(morgan('dev'));
@@ -53,6 +55,8 @@ module.exports = function(app, express) {
             } else {
               // otherwise, start session...
               // redirection is taken care of on client-side
+              var token = jwt.encode(user, 'secret');
+              res.json({token:token});
               console.log('successfully saved new user');
               res.end('new user successfully saved');
             }
@@ -85,7 +89,8 @@ module.exports = function(app, express) {
                 // TODO: here we'll need to pass 'resp' back to the signin
                 // auth services, but I'm unsure what 'resp' is, so I'm just
                 // passing along the boolean.
-                return(isMatch);
+                var token = jwt.encode(user, 'secret');
+                res.json({token:token});
               }
             })
             .catch(function(err) {
@@ -94,12 +99,13 @@ module.exports = function(app, express) {
               return;
             });
           res.end('completed post to signin');
-        } 
+        }
       }
     }); // end of findOne
   }); // end post to signin
 
   // developer-centered route to get all users in database
+  // TODO: remove or comment this out once we get running
   app.get('/user/signup', function(req, res) {
     User.find({}, function(err, users) {
       if (err) console.log(err);
