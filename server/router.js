@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var DiningTable = require('../app-db/diningTbl/diningTblModel');
 var algo = require('./utils/diningTableAlgo');
-// var Q = require('q');
+var Q = require('q');
 var jwt = require('jwt-simple');
 
 module.exports = function(app, express) {
@@ -26,87 +26,59 @@ module.exports = function(app, express) {
 
 // SIGN UP USER
 // this is callback system, should refactor to promises
-  app.post('/user/signup', function(req, res) {
-    console.log('signup begins');
-    // check to see if the username already exists:
-    // .count is a method that passes an err and number into a callback
-    // the number is the number of items in the table that match the
-    // object passed in as the first argument.
-    User.count({username: req.body.username}, function(err, num) {
-      // error querying database
-      if (err) {
-        console.log(new Error(err));
-        res.end();
-      } else {
-        if (num > 0) {
-          // no error saving, but there's already a user
-          res.end('That username is already taken. Try again, please.');
+  app.post('/user/signup', function(req, res, next) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    var create, newUser;
+    var findOne = Q.nbind(User.findOne, User);
+
+    // check to see if user already exists
+    findOne({username: username})
+      .then(function(user) {
+        if (user) {
+          next(new Error('User already exists'));
         } else {
-          // no user, free to proceed
-          var newUser = new User({
-            username: req.body.username,
-            password: req.body.password
-          });
-          newUser.save(function(err, user) {
-            //if there's an error saving
-            if (err) {
-              console.log(new Error(err));
-              res.end(err);
-            } else {
-              // otherwise, start session...
-              // redirection is taken care of on client-side
-              var token = jwt.encode(user, 'secret');
-              res.json({token:token});
-              console.log('successfully saved new user');
-              res.end('new user successfully saved');
-            }
-          }); // end of save
+          // make a new user if not already existing
+          create = Q.nbind(User.create, User);
+          newUser = {username: username, password: password};
+          return create(newUser);
         }
-      }
-    }); // end of count
+      })
+      .then(function(user) {
+        var token = jwt.encode(user, 'secret');
+        res.json({token: token});
+      })
+      .fail(function(error) {
+        next(error);
+      });
   }); // end of post to signup
 
   // SIGN IN USER
-  app.post('/user/signin', function(req, res) {
-    console.log('signin begins with', req.body);
-    // check to make sure the user exists
-    return User.findOne({username: req.body.username}, function(err, user) {
-      if (err) {
-        console.log(71, new Error(err));
-        res.end();
-        return;
-      } else {
-        // check the salted passwords
+  app.post('/user/signin', function(req, res, next) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({username: username})
+      .then(function(user) {
         if (!user) {
-          console.log('user--------->not exists', user);
-          res.send(400, 'Username or password is incorrect');
-          // res.end('no match for username');
-          // return;
-        } else if (user) {
-          user.comparePassword(req.body.password)
-            .then(function(isMatch) {
-              if (!isMatch) {
-                console.log('password is not a match' + req.data);
-                res.send(400, 'wrong username or password; please try again');
-                // throw new Error('wrong password');
-              } else {
-                console.log('password matches!');
-                // TODO: here we'll need to pass 'resp' back to the signin
-                // auth services, but I'm unsure what 'resp' is, so I'm just
-                // passing along the boolean.
+          next(new Error('User does not exist'));
+        } else {
+          return user.comparePassword(password)
+            .then(function(foundUser) {
+              if (foundUser) {
                 var token = jwt.encode(user, 'secret');
                 res.json({token:token});
+              } else {
+                return next(new Error('No User'));
               }
             });
-            // .catch(function(err) {
-            //   console.log(90, err);
-            //   res.end(err);
-            //   return;
-            // });
-          res.end('completed post to signin');
         }
-      }
-    }); // end of findOne
+      })
+      .fail(function(error) {
+        next(error);
+      });
   }); // end post to signin
 
   // developer-centered route to get all users in database

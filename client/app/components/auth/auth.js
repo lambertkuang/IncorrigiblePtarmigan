@@ -13,7 +13,7 @@ angular.module('seatly.auth', [])
         $location.path('/guestinput');
       })
       .catch(function(error) {
-        console.error(error);
+        console.log(error);
       });
   };
 
