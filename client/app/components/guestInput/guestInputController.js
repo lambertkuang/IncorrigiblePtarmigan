@@ -8,8 +8,19 @@ angular.module('seatly.guestInput', [])
 	$scope.guestName = "";
 	$scope.friendName = "";
 	$scope.enemy = "";
-	$scope.showConstraints = false;
 	$scope.peoplePerTable = null;
+
+	// variables for hiding/showing
+	$scope.peopleInput = true;
+	$scope.guestInput = false;
+	$scope.constraintInput = false;
+
+	// save number of people per tables and
+	// move on to adding guests
+	$scope.moveOn = function() {
+		$scope.peopleInput = false;
+		$scope.guestInput = true;
+	}
 
 	// add a guest and possible +1 to guests view
 	$scope.addGuest = function(){
@@ -78,7 +89,8 @@ angular.module('seatly.guestInput', [])
 			$scope.addGuest();
 		}
 		// called on button click to show the constraints view
-		$scope.showConstraints = true;
+		$scope.guestInput = false;
+		$scope.constraintInput = true;
 	};
 
 	// add bi-directional constraints

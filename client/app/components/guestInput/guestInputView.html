@@ -1,10 +1,11 @@
 <div class="container default" ng-controller="guestInputCtrl">
 
-	<div>
-		<input ng-model='peoplePerTable' placeholder='Number of People Per Table'>
+	<div ng-show='peopleInput'>
+		<input class='people' ng-model='peoplePerTable' placeholder='Number of People Per Table'>
+		<button ng-click='moveOn()'>Add Guest Information</button>
 	</div>
 
-	<div ng-hide="showConstraints">
+	<div ng-show='guestInput'>
 	  <form name="guestInputForm" role="form" novalidate>
 
 	  <div class="row">
@@ -51,7 +52,7 @@
   </div>
 
   <!-- Constraint View -->
-  <div ng-show="showConstraints" class="color-border">
+  <div ng-show="constraintInput" class="color-border">
   <div class="row">
 	  <div class="col-md-12">
 	  <h3 class="constraints-header">Add Constraints</h3>
