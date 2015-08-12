@@ -198,7 +198,7 @@ module.exports = function(app, express) {
       // loop through diningTables
       diningTables.forEach(function(diningTable, index) {
         var dt = new DiningTable({
-          diningTableName: index,
+          diningTableName: index + 1,
           guestsAtTable: diningTable
         });
         dt.save(function(err, table) {
