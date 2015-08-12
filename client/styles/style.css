@@ -96,12 +96,24 @@ h1, .link {
 	color: #473E3F;
 }
 
+<<<<<<< HEAD
+=======
+.listview {
+	width: 35%;
+	margin: 0 auto;
+}
+
+>>>>>>> c758c639b2d76e292b3bfd6e716b9f2c72b195e4
 table, th, td {
 	border: 1px solid black;
 	padding: 5px;
 }
 
+<<<<<<< HEAD
 .name:hover {
+=======
+.row:hover {
+>>>>>>> c758c639b2d76e292b3bfd6e716b9f2c72b195e4
 	background-color: #218C8D;
 	cursor: pointer;
 }
@@ -114,11 +126,16 @@ tr:nth-child(odd) {
 	background-color: #8EDC9D;
 }
 
+<<<<<<< HEAD
 tr:nth-child(2) {
 	background-color: #F9E559;
 }
 tr:nth-child(1) {
 	background-color: #EF7126;
+=======
+tr:nth-child(1) {
+	background-color: #F9E559;
+>>>>>>> c758c639b2d76e292b3bfd6e716b9f2c72b195e4
 }
 
 .listview h5 {
@@ -129,6 +146,7 @@ tr:nth-child(1) {
 table: {
 	margin: 10px;
 }
+<<<<<<< HEAD
 
 .diningTables {
 	width: 500px;
@@ -147,3 +165,5 @@ table: {
 	margin: 0 auto;
 	text-align: center;
 }
+=======
+>>>>>>> c758c639b2d76e292b3bfd6e716b9f2c72b195e4

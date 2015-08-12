@@ -25,7 +25,6 @@ angular.module('seatly.list', [])
 
   // find a particular guest and go into edit view
   $scope.fauxRedirect = function(guestName) {
-
     // NOTE: NOT MVP. uncomment when you
     // want to keep working on it
 
