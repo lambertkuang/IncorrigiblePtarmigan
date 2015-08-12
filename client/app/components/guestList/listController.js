@@ -2,10 +2,7 @@ angular.module('seatly.list', [])
 .controller('listController',['$scope', 'List', function($scope, List) {
   // change scope variables to center around
   // a list of tables with guests in those tables
-
-
-  // all the guests; for use in list
-  $scope.guests = [];
+  $scope.diningTbls = [];
 
   // the guest currently being edited
   $scope.guest = {};
@@ -19,8 +16,7 @@ angular.module('seatly.list', [])
     List.viewGuests()
     // this function will get a list of tables under .data
     .then(function(allGuests) {
-      $scope.guests = allGuests;
-      console.log('bound data');
+      $scope.diningTbls = allGuests.data;
     })
     .catch(function(err) {
       console.log(new Error(err));
@@ -29,16 +25,20 @@ angular.module('seatly.list', [])
 
   // find a particular guest and go into edit view
   $scope.fauxRedirect = function(guestName) {
-    List.getGuest(guestName)
-    .then(function(guest) {
-      console.log(guest.data);
-      $scope.guest = guest.data;
-      // hide the list view and unhide the edit view
-      $scope.inEdit = true;
-    })
-    .catch(function(err) {
-      console.log(new Error(err));
-    });
+
+    // NOTE: NOT MVP. uncomment when you
+    // want to keep working on it
+
+    // List.getGuest(guestName)
+    // .then(function(guest) {
+    //   console.log(guest.data);
+    //   $scope.guest = guest.data;
+    //   // hide the list view and unhide the edit view
+    //   $scope.inEdit = true;
+    // })
+    // .catch(function(err) {
+    //   console.log(new Error(err));
+    // });
   };
 
   // save the edited information to db
