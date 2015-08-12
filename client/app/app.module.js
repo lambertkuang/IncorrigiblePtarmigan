@@ -1,6 +1,7 @@
 angular.module('seatly', [
 	'seatly.guestInput',
 	'seatly.auth',
+  'seatly.authServices',
 	// 'seatly.edit',
 	// 'seatly.start',
 	// 'seatly.constraintInput',
