@@ -101,7 +101,7 @@ table, th, td {
 	padding: 5px;
 }
 
-.row:hover {
+.name:hover {
 	background-color: #218C8D;
 	cursor: pointer;
 }
@@ -114,8 +114,11 @@ tr:nth-child(odd) {
 	background-color: #8EDC9D;
 }
 
-tr:nth-child(1) {
+tr:nth-child(2) {
 	background-color: #F9E559;
+}
+tr:nth-child(1) {
+	background-color: #EF7126;
 }
 
 .listview h5 {
