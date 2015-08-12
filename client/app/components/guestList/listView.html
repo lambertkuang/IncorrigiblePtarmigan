@@ -3,7 +3,7 @@
     <h1 class='headline'>All Guests</h1>
     <div class='listview'>
       <h5>Number of Tables: {{ diningTbls.length }} </h5>
-      <table class='guestList' ng-repeat='diningTbl in diningTbls'>
+      <table class='diningTables' ng-repeat='diningTbl in diningTbls'>
         <tr>
           <th>Guest</th>
           <th>Table</th>
@@ -11,8 +11,8 @@
           <th>People They Shouldn't Sit Near</th>
         </tr>
         <tr ng-repeat="guest in diningTbl.guestsAtTable">
+          <td ng-click='fauxRedirect(guest.guestName)'>{{ diningTbl.diningTableName }}</td>
           <td class='row' ng-click='fauxRedirect(guest.guestName)'>{{ guest.guestName }}</td>
-          <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.diningTableId }}</td>
           <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.friendName }}</td>
           <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.constraints }}</td>
         </tr>
@@ -32,9 +32,7 @@
       <div>
         <input ng-model='guest.constraints' placeholder='any guests this guest should not sit with, separated by commas'>
       </div>
-      <div>
-        Dining Table ID: {{guest.diningTableId}}
-      </div>
+
       <button ng-click='editGuest()'>Done Editing Guest</button>
     </form>
     </d
