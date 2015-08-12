@@ -4,7 +4,7 @@
   body {
     background: url("../../assets/signin-img.jpg");
     background-position: center;
-    margin-top: 50px;
+    margin-top: 40px;
   }
 </style>
 
@@ -21,16 +21,18 @@
   <form class='auth' name='signinForm' ng-submit='signin()'>
     <div class="row">
       <div class="col-md-4"></div>
-        <div class="col-md-4 add-background">
-          <input type="text" ng-model='user.username' placeholder='username'>
+        <div class="col-md-4 add-background" id="auth-label">
+        <label for="username">Username: </label>
+          <input type="text" ng-model="user.username" placeholder="Required" class="form-control password">
         </div>
         <div class "col-md-4"></div>
     </div>
 
     <div class="row">
       <div class="col-md-4"></div>
-      <div class="col-md-4 add-background">
-        <input class='password' type="password" ng-model='user.password' placeholder='password'>
+      <div class="col-md-4 add-background" id="auth-label">
+      <label for="password">Password: </label>
+        <input class="form-control password" type="password" ng-model="user.password" placeholder="Required">
       </div>
       <div class "col-md-4"></div>
     </div>
@@ -38,8 +40,9 @@
     <div class="row">
       <div class="col-md-4"></div>
       <div class="col-md-4 add-background">
-        <button class="btn btn-info">Sign in</button>
+        <button class="btn btn-info link">Sign in</button>
       </div>
+      <div class "col-md-4"></div>
     </div>
 
   </form>
