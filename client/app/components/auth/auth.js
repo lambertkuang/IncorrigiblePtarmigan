@@ -5,7 +5,7 @@ angular.module('seatly.auth', [])
   $scope.user = {};
 
   $scope.signin = function() {
-    console.log(8, 'signin');
+    // console.log(8, 'signin');
     Auth.signin($scope.user)
       .then(function(token) {
         $window.localStorage.setItem('com.seatly', token);
@@ -13,12 +13,12 @@ angular.module('seatly.auth', [])
         $location.path('/guestinput');
       })
       .catch(function(error) {
-        console.error(error);
+        console.log(error);
       });
   };
 
   $scope.signup = function() {
-    console.log('21, signup');
+    // console.log('21, signup');
     Auth.signup($scope.user)
       .then(function(token) {
         $window.localStorage.setItem('com.seatly', token);
@@ -29,5 +29,8 @@ angular.module('seatly.auth', [])
         console.error(error);
       });
   };
-  
+
+  $scope.signout = function() {
+    Auth.signout();
+  };
 });
