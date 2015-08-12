@@ -30,4 +30,7 @@ angular.module('seatly.auth', [])
       });
   };
 
+  $scope.signout = function() {
+    Auth.signout();
+  };
 });

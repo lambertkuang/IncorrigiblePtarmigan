@@ -79,8 +79,8 @@ module.exports = function(app, express) {
         // check the salted passwords
         if (!user) {
           console.log('user--------->not exists', user);
-          // throw new Error('User does not exist');
           res.send(400, 'Username or password is incorrect');
+          // throw new Error('User does not exist');
           // res.end('no match for username');
           // return;
         } else if (user) {
