@@ -112,7 +112,7 @@ module.exports = function(app, express) {
 ////////////////////////////////////////////////////////
 
 // client-side posts a list of guests
-  app.post('/create', function(req, res) {
+  app.post('/guest/create', function(req, res) {
     console.log('------------------------------');
     console.log(req.body.guests[0]);
     // console.log(req.body.guests);
@@ -131,6 +131,75 @@ module.exports = function(app, express) {
     }
     res.send(200);
   });
+
+//retrieves all guests
+  app.get('/guest', function(req, res){
+    Guest.find(function(err, guests){
+      if(err) return console.log(err);
+      //console.log(guests);
+      console.log(184, 'guests gotten');
+      if(guests) {
+        res.send(200, guests);
+      } else {
+        res.send(404);
+      }
+    });
+  });
+
+  // retrieve one guest
+  app.post('/guest/one', function(req, res) {
+    Guest.findOne({'guestName': req.body.name}, function(err, guest) {
+      if (err) {
+        console.log(196, err);
+        res.send(500);
+        return;
+      }
+      res.send(201, guest);
+    });
+  });
+
+// edit guest properties
+  app.put('/guest/edit', function(req, res){
+    var changes = req.body.changes;
+    console.log('-------------->', changes);
+    // test object: { "changes": [ "Jennie Kim", { "guestName": "JK", "friendName": "Eric"} ]}
+    Guest.findOne({ guestName: changes[0]}, function(err, guest){
+      console.log("inside findOne", 197, guest);
+      if(err){
+        // if there's an error
+        console.log(202, err);
+        res.send(400);
+      } else if (!guest) {
+        // if the guest hasn't been found
+        console.log(206, 'no guest');
+        res.send(500);
+      } else {
+        for(var key in changes[1]) {
+          guest[key] = changes[1][key];
+        }
+        guest.save(function(err){
+          if(err) {
+            res.send(400);
+          } else {
+            res.send(200);
+          }
+        });
+      }
+    });
+  });
+
+  // drop guests
+  app.post('/guest/clear', function(req, res) {
+    Guest.find().remove(function(err) {
+      if (err) return console.log(err);
+      res.send(200);
+    });
+  });
+
+////////////////////////////////////////////////////////
+//                      ALGO INFO                     //
+////////////////////////////////////////////////////////
+
 
   // This will use the sorting algorithm to arrange the list of guests into multiple dining tables
   // Client will pass in numPerTable
@@ -173,70 +242,6 @@ module.exports = function(app, express) {
       } else {
         res.send(404);
       }
-    });
-  });
-
-//retrieves all guests
-  app.get('/create', function(req, res){
-    Guest.find(function(err, guests){
-      if(err) return console.log(err);
-      //console.log(guests);
-      console.log(184, 'guests gotten');
-      if(guests) {
-        res.send(200, guests);
-      } else {
-        res.send(404);
-      }
-    });
-  });
-
-  // retrieve one guest
-  app.post('/one', function(req, res) {
-    Guest.findOne({'guestName': req.body.name}, function(err, guest) {
-      if (err) {
-        console.log(196, err);
-        res.send(500);
-        return;
-      }
-      res.send(201, guest);
-    });
-  });
-
-// edit guest properties
-  app.put('/create', function(req, res){
-    var changes = req.body.changes;
-    console.log('-------------->', changes);
-    // test object: { "changes": [ "Jennie Kim", { "guestName": "JK", "friendName": "Eric"} ]}
-    Guest.findOne({ guestName: changes[0]}, function(err, guest){
-      console.log("inside findOne", 197, guest);
-      if(err){
-        // if there's an error
-        console.log(202, err);
-        res.send(400);
-      } else if (!guest) {
-        // if the guest hasn't been found
-        console.log(206, 'no guest');
-        res.send(500);
-      } else {
-        for(var key in changes[1]) {
-          guest[key] = changes[1][key];
-        }
-        guest.save(function(err){
-          if(err) {
-            res.send(400);
-          } else {
-            res.send(200);
-          }
-        });
-      }
-    });
-  });
-
-  // drop guests
-  app.post('/users/clear', function(req, res) {
-    Guest.find().remove(function(err) {
-      if (err) return console.log(err);
-      res.send(200);
     });
   });
 

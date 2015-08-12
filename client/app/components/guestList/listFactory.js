@@ -11,7 +11,7 @@ angular.module('seatly.list')
   var getGuest = function(guestName) {
     return $http({
       method: 'POST',
-      url: '/one',
+      url: '/guest/one',
       data: {'name': guestName}
     }).then(function(guest) {
       return guest;
@@ -24,7 +24,7 @@ angular.module('seatly.list')
   var editGuest = function(guestObj) {
     return $http({
       method: 'PUT',
-      url: '/create',
+      url: '/guest/create',
       data: guestObj
     });
   };

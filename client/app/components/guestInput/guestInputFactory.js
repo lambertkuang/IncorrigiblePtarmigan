@@ -3,7 +3,7 @@ angular.module('seatly.guestInput')
 	var addAllGuests = function(guestsArray){
 		return $http({
 			method: 'POST',
-			url: '/create',
+			url: '/guest/create',
 			data: guestsArray
 		});
 	};
