@@ -4,7 +4,7 @@ angular.module('seatly.list')
     return $http({
       method: 'GET',
       // change this to /tables/get
-      url: '/create'
+      url: '/tables/get'
     });
   };
 
