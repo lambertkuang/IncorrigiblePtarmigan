@@ -1,0 +1,40 @@
+<div ng-controller='listController'>
+  <div ng-hide='inEdit' id='list'>
+    <h1 class='headline'>All Guests</h1>
+    <div class='listview'>
+      <h5>Number of Tables: {{ diningTbls.length }} </h5>
+      <table class='diningTables' ng-repeat='diningTbl in diningTbls'>
+        <tr>
+          <th>Table Name</th>
+          <th colspan="2"> {{ diningTbl.diningTableName }} </th>
+        </tr>
+        <tr>
+          <th>Guest</th>
+          <th>Plus-One</th>
+          <th>People They Shouldn't Sit Near</th>
+        </tr>
+        <tr ng-repeat="guest in diningTbl.guestsAtTable">
+          <td class='name' ng-click='fauxRedirect(guest.guestName)'>{{ guest.guestName }}</td>
+          <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.friendName }}</td>
+          <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.constraints }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div ng-show='inEdit' id='edit'>
+    <h1 class='headline'>Edit Guest Information</h1>
+    <form name='editGuestForm'>
+      <div>
+        <input ng-model='guest.guestName' placeholder="this guest's name">
+      </div>
+      <div>
+        <input ng-model='guest.friendName' placeholder="this guest's plus-one">
+      </div>
+      <div>
+        <input ng-model='guest.constraints' placeholder='any guests this guest should not sit with, separated by commas'>
+      </div>
+      <button ng-click='editGuest()'>Done Editing Guest</button>
+    </form>
+  </div>
+</div>
