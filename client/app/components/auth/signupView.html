@@ -1,15 +1,58 @@
-<div id="signup" ng-app='seatly.auth' ng-controller='AuthController'>
-  <h1 class='headline'>signup</h1>
-  <form class='auth' name='signupForm' ng-submit='signup()'>
-    <div>
-      <input type="text" ng-model='user.username' placeholder='username'>
-    </div>
-    <div>
-      <input class='password' type="password" ng-model='user.password' placeholder='password'>
-    </div>
-    <button>Sign up</button>
-  </form>
-  <div class='link'>
-    <a href="#/signin">Already have an account? <strong>Sign in</strong>...</a>
+<div class="container default" id="signup" ng-app='seatly.auth' ng-controller='AuthController'>
+
+<style>
+  body {
+    background: url("../../assets/signin-img.jpg");
+    background-position: center;
+    margin-top: 50px;
+  }
+</style>
+
+<p class="welcome">Welcome to Seatly</p>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+      <div class="col-md-4 add-background">
+        <h1 class='headline signin-and-up'>Sign up</h1>
+        </div>
+      <div class "col-md-4"></div>
   </div>
+
+    <form class='auth' name='signupForm' ng-submit='signup()'>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 add-background">
+        <input type="text" ng-model='user.username' placeholder='username'>
+        </div>
+        <div class "col-md-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 add-background">
+          <input class='password' type="password" ng-model='user.password' placeholder='password'>
+        </div>
+        <div class "col-md-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 add-background">
+          <button class="btn btn-info">Sign up</button>
+        </div>
+        <div class "col-md-4"></div>
+      </div>
+
+    </form>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 add-background">
+        <p class='link'>
+          <a href="#/signin">Already have an account? <strong>Sign in</strong>...</a>
+        </p>
+      </div>        
+      <div class "col-md-4"></div>
+    </div>
+
 </div>

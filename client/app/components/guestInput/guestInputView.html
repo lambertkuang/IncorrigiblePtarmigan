@@ -1,4 +1,4 @@
-<div class="container" ng-controller="guestInputCtrl">
+<div class="container default" ng-controller="guestInputCtrl">
 	<div ng-hide="showConstraints">
 	  <form name="guestInputForm" role="form" novalidate>
 
@@ -46,10 +46,10 @@
   </div>
 
   <!-- Constraint View -->
-  <div ng-show="showConstraints">
+  <div ng-show="showConstraints" class="color-border">
   <div class="row">
 	  <div class="col-md-12">
-	  <h3>Add Constraints</h3>
+	  <h3 class="constraints-header">Add Constraints</h3>
 	  </div>
   </div>
 
@@ -76,13 +76,13 @@
 
 	  <div class="row">
 	  	<div class="col-md-3">
-	  		<button class="btn btn-default" ng-click="addConstraint()">Update and Add Another Constraint</button>
+	  		<button class="btn btn-default add-next-guest" ng-click="addConstraint()">Update and Add Another Constraint</button>
 	  	</div>
 	  </div>
 
 	  <div class="row">
 	  	<div class="col-md-3">
-	  		<button class="btn btn-default" ng-click="addAllGuests()">Done! Get My Chart!</button>
+	  		<button class="btn btn-default done-adding" ng-click="addAllGuests()">Done! Get My Chart!</button>
 	  	</div>
 	  </div>
   </div>
