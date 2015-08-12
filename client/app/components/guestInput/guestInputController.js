@@ -2,7 +2,7 @@
 // TODO: Do not allow empty strings to be submitted for the guestName input
 
 angular.module('seatly.guestInput', [])
-.controller('guestInputCtrl', function($scope, guestInputFactory){
+.controller('guestInputCtrl', function($scope, $location, guestInputFactory){
 	// variables!
 	$scope.guests = [];
 	$scope.guestName = "";
@@ -59,13 +59,14 @@ angular.module('seatly.guestInput', [])
 		    // list page
     		console.log('55, ready to redirect');
     		// redirect to list page
+    		$location.path('/list');
     	})
     	.catch(function(err) {
-    		console.log(new Error(err));
+    		console.log(65, new Error(err));
     	});
     }) // end of then from addAllGuests
     .catch(function(err) {
-    	console.log(new Error(err));
+    	console.log(69, new Error(err));
     }); // end of catch from addAllGuests
 
 	};
