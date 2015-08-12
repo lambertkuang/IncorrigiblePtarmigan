@@ -9,12 +9,15 @@ var DiningTable = require('../app-db/diningTbl/diningTblModel');
 var algo = require('./utils/diningTableAlgo');
 var Q = require('q');
 var jwt = require('jwt-simple');
+var utils = require('./utils/utility');
 
 module.exports = function(app, express) {
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../client'));
+  // authentication middleware used to decode token and make user available on the request
+  app.use('/guest/*', utils.decode);
 
   // app.get('/', function(req, res) {
   //   res.send('Hellooooo WOOOOOORLD!!!!');
