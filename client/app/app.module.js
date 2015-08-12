@@ -1,9 +1,7 @@
 angular.module('seatly', [
 	'seatly.guestInput',
 	'seatly.auth',
-	// 'seatly.edit',
 	// 'seatly.start',
-	// 'seatly.constraintInput',
   'seatly.list',
   'ngRoute'
 ])
@@ -27,11 +25,6 @@ angular.module('seatly', [
         templateUrl: 'app/components/guestList/listView.html',
         controller: 'listController'
       })
-      // .when('/edit', {
-      //   templateUrl: 'app/components/edit/editView.html',
-      //   controller: 'editController',
-      //   controllerAs: 'edit'
-      // })
       .when('/guestinput', {
         templateUrl: 'app/components/guestInput/guestInputView.html',
         controller: 'guestInputCtrl',
