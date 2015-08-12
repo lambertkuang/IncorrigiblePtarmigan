@@ -48,6 +48,8 @@ angular.module('seatly.guestInput', [])
 	};
 
 	$scope.showConstraintsView = function(){
+		// add whatever guest is left
+		$scope.addGuest();
 		// called on button click to show the constraints view
 		$scope.showConstraints = true;
 	};

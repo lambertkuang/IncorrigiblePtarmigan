@@ -24,7 +24,7 @@ angular.module('seatly.list')
   var editGuest = function(guestObj) {
     return $http({
       method: 'PUT',
-      url: '/edit',
+      url: '/create',
       data: guestObj
     });
   };
