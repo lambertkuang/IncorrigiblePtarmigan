@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 // can probably remove seatsPerTable
 var DiningTableSchema = mongoose.Schema({
-  diningTablename: String,
+  diningTableName: String,
   guestsAtTable: Array,
   seatsPerTable: Number
 });
