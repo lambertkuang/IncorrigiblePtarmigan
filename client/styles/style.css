@@ -137,4 +137,13 @@ table: {
 
 .people {
 	width: 300px;
+	height: 40px;
+	margin: 20px 0;
+	text-align: center;
+}
+
+.tableSize {
+	width: 400px;
+	margin: 0 auto;
+	text-align: center;
 }
