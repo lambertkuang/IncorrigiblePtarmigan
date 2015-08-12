@@ -36,9 +36,10 @@ angular.module('seatly.guestInput', [])
 
 	// POST all guests to database
 	$scope.addAllGuests = function(){
-		if($scope.guestName.length > 0){
-			$scope.addGuest();
-		}
+		// add final constraints (non-duplicate functionality
+		// taken care of in addConstraint fn)
+		$scope.addConstraint();
+
 		var result = {
 			guests: $scope.guests
 		};
@@ -70,6 +71,10 @@ angular.module('seatly.guestInput', [])
 			// access the constraints array of the enemy
 			$scope.enemy.constraints.push($scope.guest.guestName);
 		}
+
+		// reset constraints
+		$scope.guest = '';
+		$scope.enemy = '';
 	};
 
 });

@@ -8,18 +8,6 @@ angular.module('seatly.guestInput')
 		});
 	};
 
-// This is not needed here - PUT reqs belong on edit page
-	// var addConstraints = function(guest, changesArray){
-	// 	console.log("addConstraints");
-	// 	return $http({
-	// 		method: 'PUT',
-	// 		// TODO: update this url
-	// 		url: '/create',
-	// 		data: guest,
-	// 		params: {changes: changesArray}
-	// 	});
-	// };
-
 	return {
 		'addAllGuests': addAllGuests,
 	};
