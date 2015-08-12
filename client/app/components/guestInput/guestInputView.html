@@ -1,10 +1,13 @@
 <div class="container" ng-controller="guestInputCtrl">
 	<div ng-hide="showConstraints">
 	  <form name="guestInputForm" role="form" novalidate>
-	    <div class="col-lg-6">
 
+	  <div class="row">
+	    <div class="col-md-12">
 				<h2 class="headline">Add Guest</h2>
+			</div>
 
+	    <div class="col-md-6">
 				<!-- TODO: Make the required message go away at the end of the seesion -->
 			  <label for="guest-name">Guest Name</label>
 				  <input name="guestname" ng-model="guestName" type="text" class="form-control" id="guest-name" placeholder="Your Guest's Name" required ng-class="{'error': guestInputForm.$dirty}"/>
@@ -12,7 +15,7 @@
 
 				<!-- Only show plus-one field if guest name field is not empty -->
 			  <div ng-show="guestName">
-				  <label for="friend-name">Guest's Plus-One</label>
+				  <label for="friend-name" class="plus-one">Guest's Plus-One</label>
 					<div class="form-group">
 					  <input ng-model="friendName" type="text" class="form-control" id="friend-name" placeholder="Your Guest's Plus-One">
 				  </div>
@@ -38,14 +41,17 @@
 
 		  </div>
 
+	  </div>
 	  </form>
   </div>
 
   <!-- Constraint View -->
   <div ng-show="showConstraints">
-	  <div class="row">
+  <div class="row">
+	  <div class="col-md-12">
 	  <h3>Add Constraints</h3>
 	  </div>
+  </div>
 
 	  <div class="row">
 	  	<div class="col-md-6">
@@ -60,7 +66,7 @@
 		  <div class="col-md-6">
 		  <ul>
 		  	<label>Enemy Name
-		  	  <select ng-model="enemy" ng-options="guest.guestName for guest in guests">
+		  	  <select ng-model="enemy" ng-options="enemy.guestName for enemy in guests">
 		  	  	<option value="">-- choose enemy --</option>
 		  	  </select>
 		  	</label>

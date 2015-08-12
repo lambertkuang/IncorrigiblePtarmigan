@@ -27,6 +27,12 @@ div .input-list {
 .add-next-guest {
 	background-color: #6CCECB;
 	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.plus-one {
+  margin-top: 20px;
+  color: #473E3F;
 }
 
 .done-adding {

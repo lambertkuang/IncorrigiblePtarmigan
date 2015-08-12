@@ -7,7 +7,6 @@ angular.module('seatly.guestInput', [])
 
 	$scope.guestName = "";
 	$scope.friendName = "";
-	$scope.constraints = [];
 	$scope.enemy = "";
 	$scope.showConstraints = false;
 
@@ -19,11 +18,6 @@ angular.module('seatly.guestInput', [])
 			"diningTableId": null,
 			"constraints": []
 		};
-
-		// var constraints = guest.constraints;
-		// if($scope.enemy) {
-		// 	constraints.push($scope.enemy);
-		// }
 
 		$scope.guests.push(guest);
 
@@ -42,7 +36,9 @@ angular.module('seatly.guestInput', [])
 	};
 
 	$scope.addAllGuests = function(){
-		$scope.addGuest();
+		if($scope.guestName.length > 0){
+			$scope.addGuest();
+		}
 		var result = {
 			guests: $scope.guests
 		};
@@ -59,20 +55,12 @@ angular.module('seatly.guestInput', [])
 	$scope.addConstraint = function(){
 		// For 2 dropdowns: Guest in col 1 is 'guest', guest in col 2 is 'enemy'
     // access the constraints array of the guest
-		var guestConstraints = $scope.guestName.constraints;
-		// push the name of the guest in the second column
-		guestConstraints.push($scope.enemy.guestName);
+		$scope.guest.constraints.push($scope.enemy.guestName);
 		
 		// To create bi-directional constraint listings
 		// access the constraints array of the enemy
-		var enemyConstraints = $scope.enemy.constraints;
-		// push guestName to the enemy constraint array
-		enemyConstraints.push($scope.guestName.guestName);
+		$scope.enemy.constraints.push($scope.guest.guestName);
 
-		// console.log("guest.constraints", $scope.guestName.constraints);
-		// console.log("enemy.constraints", $scope.enemy.constraints);
-    // console.log("enemy", $scope.enemy);
-		// console.log("guestName", $scope.guestName.guestName);
 	};
 
 });
