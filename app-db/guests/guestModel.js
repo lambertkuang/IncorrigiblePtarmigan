@@ -8,7 +8,8 @@ var GuestSchema = mongoose.Schema({
   },
   friendName: String,
   diningTableId: Number,
-  constraints: Array
+  constraints: Array,
+  user: String
 });
 
 var Guests = mongoose.model('Guests', GuestSchema);

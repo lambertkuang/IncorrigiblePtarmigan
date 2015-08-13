@@ -16,12 +16,12 @@ module.exports = function(app, express) {
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../client'));
-  // authentication middleware used to decode token and make user available on the request
-  app.use('/guest/*', utils.decode);
 
-  // app.get('/', function(req, res) {
-  //   res.send('Hellooooo WOOOOOORLD!!!!');
-  // });
+  // authentication middleware used to decode token and make user available on the request
+  // request.user will be the username
+  app.use('/guest/*', utils.decode);
+  // not DRY, but useable
+  app.use('/tables/*', utils.decode);
 
 ////////////////////////////////////////////////////////
 //                 AUTHENTICATION                     //
@@ -108,7 +108,8 @@ module.exports = function(app, express) {
       var newGuest = new Guest ({
         guestName: guests[i].guestName,
         friendName: guests[i].friendName,
-        constraints: guests[i].constraints
+        constraints: guests[i].constraints,
+        user: req.user
       });
       newGuest.save(function(err,newGuest){
         if(err) return console.log(err);
@@ -174,7 +175,7 @@ module.exports = function(app, express) {
     });
   });
 
-  // drop guests
+  // drop all guests, regardless of user
   app.post('/guest/clear', function(req, res) {
     Guest.find().remove(function(err) {
       if (err) return console.log(err);
@@ -191,18 +192,19 @@ module.exports = function(app, express) {
   // Client will pass in numPerTable
   app.post('/tables/sort', function(req, res) {
     // remove current diningTables
-    DiningTable.find().remove(function(err) {
+    DiningTable.find({user: req.user}).remove(function(err) {
       if (err) return console.log(err);
     });
     // expecting client to pass in a numPerTable
     var numPerTable = req.body.numPerTable;
-    Guest.find(function(err, guests) {
+    Guest.find({user: req.user}, function(err, guests) {
       var diningTables = algo.makeDiningTables(guests, numPerTable);
       // loop through diningTables
       diningTables.forEach(function(diningTable, index) {
         var dt = new DiningTable({
           diningTableName: index + 1,
-          guestsAtTable: diningTable
+          guestsAtTable: diningTable,
+          user: req.user
         });
         dt.save(function(err, table) {
           if (err) {
@@ -219,10 +221,11 @@ module.exports = function(app, express) {
   // returns a matrix of dining tables (an array of arrays; the nested
   // arrays are the dining tables, full of guest objects)
   app.get('/tables/get', function(req, res) {
-    DiningTable.find(function(err, diningTables) {
-      if (err) return console.log(err);
+    console.log(227, req.user);
+    DiningTable.find({user: req.user}, function(err, diningTables) {
+      if (err) return console.log(new Error(err));
       //console.log(diningTables);
-      console.log(170, 'diningTables gotten');
+      console.log('diningTables gotten');
       if (!!diningTables) {
         res.send(200, diningTables);
       } else {
