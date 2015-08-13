@@ -16,10 +16,14 @@
 				<h2 class="headline">Add Guest</h2>
 			</div>
 
-	    <div class="col-md-6">
-				<!-- TODO: Make the required message go away at the end of the seesion -->
+	    <div class="col-md-6" ng-class="{ 'has-error': guestInputForm.guestname.$invalid && !guestInputForm.guestname.$pristine && !isPristineAgain }">
 			  <label for="guest-name">Guest Name</label>
-				  <input name="guestname" ng-model="guestName" type="text" class="form-control" id="guest-name" placeholder="Your Guest's Name" required ng-class="{'error': guestInputForm.$dirty}"/>
+				  <input name="guestname" ng-model="guestName" type="text" class="form-control" id="guest-name" placeholder="Your Guest's Name" required>
+			  <div role="alert">
+			    <span class="help-block" ng-show="guestInputForm.guestname.$error.required && !guestInputForm.guestname.$pristine && !isPristineAgain">
+			    	Guest name is required.
+			    </span>
+			  </div>
 				
 
 				<!-- Only show plus-one field if guest name field is not empty -->
@@ -31,7 +35,7 @@
 			  </div>
 
 			  <div>
-				  <button class="btn btn-default add-next-guest" ng-click="addGuest()">Continue Adding Guests</button>
+				  <button class="btn btn-default add-next-guest" ng-disabled="guestInputForm.guestname.$invalid" ng-click="addGuest()">Continue Adding Guests</button>
 			  </div>
 
 			  <div>

@@ -14,7 +14,7 @@ angular.module('seatly.guestInput')
 			url: '/tables/sort',
 			data: {'numPerTable': tableSize}
 		});
-	}
+	};
 
 	return {
 		'addAllGuests': addAllGuests,
