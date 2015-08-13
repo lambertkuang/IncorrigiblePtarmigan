@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 var DiningTableSchema = mongoose.Schema({
   diningTableName: String,
   guestsAtTable: Array,
-  seatsPerTable: Number
+  seatsPerTable: Number,
+  user: String
 });
 
 var DiningTables = mongoose.model('DiningTables', DiningTableSchema);
