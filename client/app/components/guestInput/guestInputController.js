@@ -15,12 +15,15 @@ angular.module('seatly.guestInput', [])
 	$scope.guestInput = false;
 	$scope.constraintInput = false;
 
+	// variable to reset pristine status of input after user clicks "Continue adding guests"
+	$scope.isPristineAgain = false;
+
 	// save number of people per tables and
 	// move on to adding guests
 	$scope.moveOn = function() {
 		$scope.peopleInput = false;
 		$scope.guestInput = true;
-	}
+	};
 
 	// add a guest and possible +1 to guests view
 	$scope.addGuest = function(){
@@ -44,6 +47,8 @@ angular.module('seatly.guestInput', [])
 		// reset the fields
 		$scope.guestName = "";
 		$scope.friendName = "";
+		// Reset form input to pristine to prevent validation error
+		$scope.isPristineAgain = true;
 	};
 
 	// POST all guests to database
@@ -106,29 +111,11 @@ angular.module('seatly.guestInput', [])
 			// access the constraints array of the enemy
 			$scope.enemy.constraints.push($scope.guest.guestName);
 		}
-
 		// reset constraints
 		$scope.guest = '';
 		$scope.enemy = '';
 	};
-
+   
 });
 
 
-// NOT NEEDED HERE -- the below logic describes edit capabilities, saving for info only
-		// // attach a changes object to guest
-		// var changes = $scope.guest.changes; 
-		// // set value of changes object to the changesArray
-		// $scope.guest.changes = changesArray;
-		// // set the first element in the constraints array to the guest name 
-		// constraints[0] = $scope.guest.guestName;
-		// // push enemy into the constraints array
-		// constraints.push(enemy);
-		// // push the constraints into the changes array 
-		// changesArray.push( { "constraints": constraints });
-		// // call the factory fcn to add constraints to the guest object
-		// guestInputFactory.addConstraints(guest, changesArray);
-		// // reset constraints array
-		// constraints = [];
-		// // reset changesArray 
-		// changesArray = [];
