@@ -1,9 +1,26 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/guestinput">Seatly</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#/guestinput">Create List</a></li>
+        <!-- <li><a href="#/edit">Edit List</a></li> -->
+        <li><a href="#/list">See My Seating Chart</a></li>
+      </ul>
+      <!-- Make signout a button that looks like a link so we can attach click behavior -->
+        <div class="pull-right"><a href="#/signin" type="button" class="btn btn-link signout" role="button" ng-click="signout()">Sign Out</a></div>
+    </div>
+  </div>
+</div>
+
 <div class="container default" ng-controller="guestInputCtrl">
-	<button type='button' class='btn btn-default pull-right' ng-click='signout()'>Sign Out</button><br><br><br><br>
+	<!-- <button type='button' class='btn btn-default pull-right' ng-click='signout()'>Sign Out</button><br><br><br><br> -->
 	<div class='tableSize' ng-show='peopleInput'>
-		<h1 class='headline'>Number of People Per Table</h1>
+		<h2 class='headline'>Number of Guests Per Table</h2>
 		<form name='numOfPpl'>
-			<input class='people' ng-model='peoplePerTable' placeholder='Number of People Per Table' required>
+			<input class='people' ng-model='peoplePerTable' placeholder='Number of guests per table' required>
 			<button class="btn btn-default add-next-guest" ng-click='moveOn()' ng-disabled="numOfPpl.$invalid">Add Guest Information</button>
 		</form>
 	</div>

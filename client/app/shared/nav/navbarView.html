@@ -1,35 +1,16 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Seatly</a>
+      <a class="navbar-brand" href="#/guestinput">Seatly</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-      <!-- TODO: Get active button class to work -->
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#/edit">Edit List</a></li>
         <li><a href="#/guestinput">Create List</a></li>
-        <!-- TODO: work out logic for signout feature - right now redirects to signin -->
-        <li><a href="#/signin">Sign Out</a></li>
+        <!-- <li><a href="#/edit">Edit List</a></li> -->
+        <li><a href="#/list">See My Seating Chart</a></li>
       </ul>
-    </div><!--/.nav-collapse -->
+      <!-- Make signout a button that looks like a link so we can attach click behavior -->
+        <div class="pull-right"><a href="#/signin" type="button" class="btn btn-link signout" role="button" ng-click="signout()">Sign Out</a></div>
+    </div>
   </div>
 </div>
-
-<!-- load script to manage active button state -->
-<script type="text/javascript" src="nav.js"></script>
-
-<!-- 
-<div class="container">
-  
-  <div class="text-center">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-  </div>
-  
-</div> -->
