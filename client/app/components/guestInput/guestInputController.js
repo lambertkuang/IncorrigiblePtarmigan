@@ -1,8 +1,8 @@
-// TODO: Need to validate that the guest name is unique, so you can't add duplicate +1's 
+// TODO: Need to validate that the guest name is unique, so you can't add duplicate +1's
 // TODO: Do not allow empty strings to be submitted for the guestName input
 
 angular.module('seatly.guestInput', [])
-.controller('guestInputCtrl', function($scope, $location, guestInputFactory){
+.controller('guestInputCtrl', function($scope, $location, guestInputFactory, Auth){
 	// variables!
 	$scope.guests = [];
 	$scope.guestName = "";
@@ -71,7 +71,7 @@ angular.module('seatly.guestInput', [])
 	    // and POST to tables/sort to use algorithm
     	guestInputFactory.sortGuests($scope.peoplePerTable)
     	.then(function() {
-		    // when that's done, redirect user to 
+		    // when that's done, redirect user to
 		    // list page
     		console.log('55, ready to redirect');
     		// redirect to list page
@@ -115,7 +115,10 @@ angular.module('seatly.guestInput', [])
 		$scope.guest = '';
 		$scope.enemy = '';
 	};
-   
+
+  $scope.signout = function() {
+  	Auth.signout();
+  };
 });
 
 

@@ -1,5 +1,5 @@
 angular.module('seatly.list', [])
-.controller('listController',['$scope', 'List', function($scope, List) {
+.controller('listController',['$scope', 'List', 'Auth', function($scope, List, Auth) {
   // change scope variables to center around
   // a list of tables with guests in those tables
   $scope.diningTbls = [];
@@ -65,6 +65,10 @@ angular.module('seatly.list', [])
       $scope.init();
       return res;
     });
+  };
+
+  $scope.signout = function() {
+    Auth.signout();
   };
 
   $scope.init();

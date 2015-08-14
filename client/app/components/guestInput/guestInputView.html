@@ -1,5 +1,5 @@
 <div class="container default" ng-controller="guestInputCtrl">
-
+	<button type='button' class='btn btn-default pull-right' ng-click='signout()'>Sign Out</button><br><br><br><br>
 	<div class='tableSize' ng-show='peopleInput'>
 		<h1 class='headline'>Number of People Per Table</h1>
 		<form name='numOfPpl'>
@@ -24,7 +24,7 @@
 			    	Guest name is required.
 			    </span>
 			  </div>
-				
+
 
 				<!-- Only show plus-one field if guest name field is not empty -->
 			  <div ng-show="guestName">
@@ -47,7 +47,7 @@
 			    <div class="highlight-box">
 			    <!-- TODO: Add logic to show that a plus-one guest is the plus-one of a primary guest -->
 					  <div class="input-list" ng-repeat="guest in guests | orderBy: 'guestName' ">
-					    {{guest.guestName}} 
+					    {{guest.guestName}}
 					  </div>
 				  </div>
 			  </div>
