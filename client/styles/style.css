@@ -152,3 +152,9 @@ table: {
 	margin: 0 auto;
 	text-align: center;
 }
+
+.signout {
+	text-align: center;
+	vertical-align: center;
+	margin-top: 7px;
+}
