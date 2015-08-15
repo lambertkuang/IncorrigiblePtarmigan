@@ -10,51 +10,27 @@
 
 <p class="welcome">Welcome to Seatly</p>
 
-  <div class="row">
-    <div class="col-md-4"></div>
-      <div class="col-md-4 add-background">
-        <h1 class='headline signin-and-up'>Sign up</h1>
-        </div>
-      <div class "col-md-4"></div>
-  </div>
+  <!-- start flexbox -->
+  <div class="flex-container">
+    <div class="add-background">
+      <h1 class="headline signin-and-up">Sign up</h1>
 
-    <form class='auth' name='signupForm' ng-submit='signup()'>
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 add-background" id="auth-label">
+      <form class="auth" name="signupForm" ng-submit="signup()">
+        <!-- username field -->
         <label for="username">Username: </label>
-          <input type="text" ng-model="user.username" placeholder="Required" class="form-control password">
-        </div>
-        <div class "col-md-4"></div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4"></div>
-      <div class="col-md-4 add-background" id="auth-label">
-      <label for="password">Password: </label>
+        <input type="text" ng-model="user.username" placeholder="Required" class="form-control password">
+        <!-- password field -->
+        <label for="password">Password: </label>
         <input class="form-control password" type="password" ng-model="user.password" placeholder="Required">
-        </div>
-        <div class "col-md-4"></div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 add-background">
-          <button class="btn btn-info link">Sign up</button>
-        </div>
-        <div class "col-md-4"></div>
-      </div>
-
-    </form>
-
-    <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4 add-background">
-        <p class="link">
-          <a href="#/signin">Already have an account? <strong>Sign in</strong>...</a>
-        </p>
-      </div>
-      <div class "col-md-4"></div>
+        <!-- sign up button -->
+        <div class="flex-item"><button class="signup btn btn-info link">Sign up</button></div>
+      </form>
+      <!-- link to sign in -->
+      <p class="link">
+        <a href="#/signin">Already have an account? <strong>Sign in</strong>...</a>
+      </p>
     </div>
+  </div>  <!-- end flexbox -->
 
 </div>

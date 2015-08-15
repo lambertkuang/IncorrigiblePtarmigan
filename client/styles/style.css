@@ -2,8 +2,23 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
+.flex-container {
+	display: -webkit-flex; /*safari*/
+	display: flex;
+	-webkit-justify-content: center;
+	justify-content: center;
+	align-content: center;
+}
+
+.flex-item {
+	text-align: center;
+}
+
 .add-background {
   background-color: rgba(255, 255, 255, 0.7);
+  padding-right: 75px;
+  padding-left: 75px;
+  border-radius: 5%;
 }
 
 .default {
@@ -30,6 +45,10 @@ li {
 .constraints-header {
   margin-bottom: 30px;
   text-align: center;
+}
+
+.signup {
+	background-color: #3B1E2D;
 }
 
 div .input-list {
