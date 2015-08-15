@@ -143,7 +143,7 @@ module.exports = function(app, express) {
         res.send(400);
       } else if (!guest) {
         // if the guest hasn't been found
-        console.log(206, 'no guest');
+        console.log(161, 'no guest');
         res.send(500);
       } else {
         for(var key in changes[1]) {
@@ -160,6 +160,16 @@ module.exports = function(app, express) {
     });
   });
 
+  // find and remove one guest
+  app.post('/guest/delete', function(req, res) {
+    Guest.findOneAndRemove({guestName: req.body.name}, function(err, guest) {
+      if (err) console.log(new Error(err));
+      else {
+        console.log('---------------------> 183');
+        res.end(JSON.stringify(guest));
+      }
+    })
+  });
 
 ////////////////////////////////////////////////////////
 //                      ALGO INFO                     //

@@ -42,15 +42,17 @@
     <h1 class='headline'>Edit Guest Information</h1>
     <form name='editGuestForm'>
       <div>
-        <input ng-model='guest.guestName' placeholder="this guest's name">
+        Name: {{ guest.guestName }}
       </div>
       <div>
-        <input ng-model='guest.friendName' placeholder="this guest's plus-one">
+        Plus-One: {{ guest.friendName }}
       </div>
       <div>
-        <input ng-model='guest.constraints' placeholder='any guests this guest should not sit with, separated by commas'>
+        People They Shouldn't Sit Near: {{ guest.constraints }}
       </div>
+      <button ng-click='deleteGuest()'>Delete Guest</button>
       <button ng-click='editGuest()'>Done Editing Guest</button>
+      <button ng-click='reverseRedirect()'>Cancel</button>
     </form>
   </div>
 </div>

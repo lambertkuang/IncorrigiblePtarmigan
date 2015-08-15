@@ -29,10 +29,24 @@ angular.module('seatly.list')
     });
   };
 
+  var deleteGuest = function(guestObj) {
+    return $http({
+      method: 'POST',
+      url: '/guest/delete',
+      data: {'name': guestObj.guestName}
+    })
+    .then(function(deletedGuest) {
+      console.log('We MADE IT:', deletedGuest);
+      // find any plus ones
+      // find any constraint matches
+    });
+  };
+
   return {
     'viewGuests': viewGuests,
     'getGuest': getGuest,
-    'editGuest': editGuest
+    'editGuest': editGuest,
+    'deleteGuest': deleteGuest
   };
 
 });
