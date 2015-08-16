@@ -177,3 +177,17 @@ table: {
 	vertical-align: center;
 	margin-top: 7px;
 }
+
+#edit {
+	width: 400px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#edit div {
+	text-align: left;
+	font-size: 16px;
+	background-color: #dddddd;
+	padding: 5px 0 5px 40px;
+	border-radius: 10px;
+}

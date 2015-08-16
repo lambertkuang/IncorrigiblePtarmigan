@@ -39,6 +39,7 @@ angular.module('seatly.list')
         data: {'changes': [guestObj.friendName, { 'friendName' : ''}]}
       }) // then delete them
       .then(function() {
+        // delete the guest
         return $http({
           method: 'POST',
           url: '/guest/delete',

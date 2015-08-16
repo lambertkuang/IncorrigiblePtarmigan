@@ -39,7 +39,7 @@
   </div>
 
   <div ng-show='inEdit' id='edit'>
-    <h1 class='headline'>Edit Guest Information</h1>
+    <h1 class='headline'>Guest Information</h1>
     <form name='editGuestForm'>
       <div>
         Name: {{ guest.guestName }}
@@ -50,9 +50,9 @@
       <div>
         People They Shouldn't Sit Near: {{ guest.constraints }}
       </div>
-      <button ng-click='deleteGuest()'>Delete Guest</button>
-      <button ng-click='editGuest()'>Done Editing Guest</button>
-      <button ng-click='reverseRedirect()'>Cancel</button>
+      <button class='btn btn-default' ng-click='deleteGuest()'>Delete Guest</button>
+      <button class='btn btn-default' ng-click='editGuest()'>Done Viewing Guest</button>
+      <button class='btn btn-default add-next-guest' ng-click='reverseRedirect()'>Cancel</button>
     </form>
   </div>
 </div>
