@@ -85,7 +85,7 @@ angular.module('seatly.list', [])
 
   // resort dining tables
   $scope.reshuffle = function() {
-    var pplPerTable = $scope.diningTbls[0].guestsAtTable;
+    var pplPerTable = $scope.diningTbls[0].guestsAtTable.length;
     guestInputFactory.sortGuests(pplPerTable)
     .then(function() {
       $scope.init();
