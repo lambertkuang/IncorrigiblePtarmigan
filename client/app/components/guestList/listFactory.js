@@ -1,9 +1,8 @@
 angular.module('seatly.list')
-.factory('List', function($http) {
+.factory('List', [ '$http', function($http) {
   var viewGuests = function() {
     return $http({
       method: 'GET',
-      // change this to /tables/get
       url: '/tables/get'
     });
   };
@@ -29,17 +28,43 @@ angular.module('seatly.list')
     });
   };
 
+// test object: { "changes": [ "Jennie Kim", { "guestName": "JK", "friendName": "Eric"} ]}
+// note: this function doesn't seem very DRY, but hopefully functional
   var deleteGuest = function(guestObj) {
-    return $http({
-      method: 'POST',
-      url: '/guest/delete',
-      data: {'name': guestObj.guestName}
-    })
-    .then(function(deletedGuest) {
-      console.log('We MADE IT:', deletedGuest);
-      // find any plus ones
-      // find any constraint matches
-    });
+    // first remove any +1 ties they had
+    if (guestObj.friendName) {
+      return $http({
+        method: 'PUT',
+        url: '/guest/edit',
+        data: {'changes': [guestObj.friendName, { 'friendName' : ''}]}
+      }) // then delete them
+      .then(function() {
+        return $http({
+          method: 'POST',
+          url: '/guest/delete',
+          data: {'name': guestObj.guestName}
+        })
+        .then(function() {
+        })
+        .catch(function(err) {
+          console.log(new Error(err));
+        });
+      })
+      .catch(function(err) {
+        console.log(new Error(err));
+      })
+    } else {
+      return $http({
+        method: 'POST',
+        url: '/guest/delete',
+        data: {'name': guestObj.guestName}
+      })
+      .then(function() {
+      })
+      .catch(function(err) {
+        console.log(new Error(err));
+      });
+    }
   };
 
   return {
@@ -49,4 +74,4 @@ angular.module('seatly.list')
     'deleteGuest': deleteGuest
   };
 
-});
+}]);

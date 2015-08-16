@@ -1,5 +1,5 @@
 angular.module('seatly.list', [])
-.controller('listController',['$scope', 'List', 'Auth', 'guestInputFactory', function($scope, List, Auth, guestInputFactory) {
+.controller('listController', ['$scope', 'List', 'Auth', 'guestInputFactory', function($scope, List, Auth, guestInputFactory) {
   // change scope variables to center around
   // a list of tables with guests in those tables
   $scope.diningTbls = [];
@@ -61,8 +61,9 @@ angular.module('seatly.list', [])
         contraints: [],
         diningTableId: null
       };
-      $scope.inEdit = false;
+
       $scope.init();
+      $scope.inEdit = false;
       return res;
     });
   };
