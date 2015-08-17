@@ -1,3 +1,4 @@
+<!-- TODO: Refactor to enable nested views, using this file for the nav bar view -->
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -6,10 +7,11 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li><a href="#/guestinput">Create List</a></li>
-        <!-- <li><a href="#/edit">Edit List</a></li> -->
+        <!-- Uncomment the below after editview is enabled -->
+        <!--  <li><a href="#/edit">Edit List</a></li> -->
         <li><a href="#/list">See My Seating Chart</a></li>
       </ul>
-      <!-- Make signout a button that looks like a link so we can attach click behavior -->
+        <!-- Make signout a button that looks like a link so we can attach click behavior -->
         <div class="pull-right"><a href="#/signin" type="button" class="btn btn-link signout" role="button" ng-click="signout()">Sign Out</a></div>
     </div>
   </div>

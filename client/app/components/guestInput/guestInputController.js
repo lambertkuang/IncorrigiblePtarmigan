@@ -1,9 +1,8 @@
-// TODO: Need to validate that the guest name is unique, so you can't add duplicate +1's
-// TODO: Do not allow empty strings to be submitted for the guestName input
+// TODO: Need to validate that the guest name is unique, so you can't add duplicate guests
 
 angular.module('seatly.guestInput', [])
 .controller('guestInputCtrl', function($scope, $location, guestInputFactory, Auth){
-	// variables!
+  // initialize variables
 	$scope.guests = [];
 	$scope.guestName = "";
 	$scope.friendName = "";
@@ -18,14 +17,13 @@ angular.module('seatly.guestInput', [])
 	// variable to reset pristine status of input after user clicks "Continue adding guests"
 	$scope.isPristineAgain = false;
 
-	// save number of people per tables and
-	// move on to adding guests
+	// save number of guests per tables; move on to adding guests
 	$scope.moveOn = function() {
 		$scope.peopleInput = false;
 		$scope.guestInput = true;
 	};
 
-	// add a guest and possible +1 to guests view
+	// add a guest and optional +1 to guests view
 	$scope.addGuest = function(){
 		var guest = {
 			"guestName": $scope.guestName,
@@ -44,7 +42,7 @@ angular.module('seatly.guestInput', [])
 			};
 			$scope.guests.push(newGuest);
 		}
-		// reset the fields
+		// reset the guest input fields
 		$scope.guestName = "";
 		$scope.friendName = "";
 		// Reset form input to pristine to prevent validation error
@@ -57,22 +55,17 @@ angular.module('seatly.guestInput', [])
 		if ($scope.guest !== '' && $scope.guest !== '') {
 			$scope.addConstraint();
 		}
-		// format the data in the form that the server expects
+		// format data in the form that the server expects
 		var result = {
 			guests: $scope.guests
 		};
-		// for developer use
-		console.dir($scope.guests);
 
     // POST all guests to database
     guestInputFactory.addAllGuests(result)
     .then(function() {
-	    // then find number of tables
-	    // and POST to tables/sort to use algorithm
+	    // find number of tables, POST to tables, using sort algorithm
     	guestInputFactory.sortGuests($scope.peoplePerTable)
     	.then(function() {
-		    // when that's done, redirect user to
-		    // list page
     		console.log('55, ready to redirect');
     		// redirect to list page
     		$location.path('/list');
@@ -84,7 +77,6 @@ angular.module('seatly.guestInput', [])
     .catch(function(err) {
     	console.log(69, new Error(err));
     }); // end of catch from addAllGuests
-
 	};
 
 	// add final guest and switch views
@@ -101,17 +93,14 @@ angular.module('seatly.guestInput', [])
 	// add bi-directional constraints
 	$scope.addConstraint = function(){
 		// For 2 dropdowns: Guest in col 1 is 'guest', guest in col 2 is 'enemy'
-    // access the constraints array of the guest
-    // if the enemy hasn't already been added, add it
+    // access the constraints array of the guest; if enemy hasn't been added, add it
     if ($scope.guest && $scope.guest.constraints.indexOf($scope.enemy.guestName) === -1) {
 			$scope.guest.constraints.push($scope.enemy.guestName);
     }
 		if ($scope.enemy && $scope.enemy.constraints.indexOf($scope.guest.guestName) === -1) {
-			// To create bi-directional constraint listings
-			// access the constraints array of the enemy
 			$scope.enemy.constraints.push($scope.guest.guestName);
 		}
-		// reset constraints
+		// reset guest and enemy fields
 		$scope.guest = '';
 		$scope.enemy = '';
 	};
@@ -120,5 +109,3 @@ angular.module('seatly.guestInput', [])
   	Auth.signout();
   };
 });
-
-

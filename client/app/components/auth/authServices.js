@@ -1,11 +1,8 @@
 angular.module('seatly.authServices', [])
   .factory('Auth', function($http, $location, $window) {
-    // it is responsible for authenticating our user
-    // by exchanging the user's username and password
-    // for a JWT from the server
-    // that JWT is then stored in localStorage as 'com.shortly'
-    // after you signin/signup open devtools, click resources,
-    // then localStorage and you'll see your token from the server
+    // Responsible for authenticating our user by exchanging username and password for a JWT
+    // from the server. JWT is then stored in localStorage as 'com.shortly'.
+    // To see token from server: Signin/signup -> open devtools -> resources -> localStorage
     var signin = function(user) {
       return $http({
         method: 'POST',

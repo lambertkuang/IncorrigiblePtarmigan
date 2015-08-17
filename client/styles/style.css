@@ -3,7 +3,7 @@ body {
 }
 
 .flex-container {
-	display: -webkit-flex; /*safari*/
+	display: -webkit-flex; /* for safari */
 	display: flex;
 	-webkit-justify-content: center;
 	justify-content: center;
@@ -22,8 +22,8 @@ body {
 }
 
 .default {
-	margin-top: 50px;
-	margin-bottom: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 li {
@@ -124,10 +124,10 @@ table, th, td {
 	padding: 5px;
 }
 
-.name:hover {
+/*.name:hover {
 	background-color: #218C8D;
 	cursor: pointer;
-}
+}*/
 
 tr:nth-child(even) {
 	background-color: #6CCECB; 

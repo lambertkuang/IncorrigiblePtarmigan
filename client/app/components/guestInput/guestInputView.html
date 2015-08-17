@@ -6,17 +6,17 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li><a href="#/guestinput">Create List</a></li>
-        <!-- <li><a href="#/edit">Edit List</a></li> -->
+        <!-- Uncomment the below after editview is enabled -->
+        <!--  <li><a href="#/edit">Edit List</a></li> -->
         <li><a href="#/list">See My Seating Chart</a></li>
       </ul>
-      <!-- Make signout a button that looks like a link so we can attach click behavior -->
+        <!-- Make signout a button that looks like a link so we can attach click behavior -->
         <div class="pull-right"><a href="#/signin" type="button" class="btn btn-link signout" role="button" ng-click="signout()">Sign Out</a></div>
     </div>
   </div>
 </div>
 
 <div class="container default" ng-controller="guestInputCtrl">
-	<!-- <button type='button' class='btn btn-default pull-right' ng-click='signout()'>Sign Out</button><br><br><br><br> -->
 	<div class='tableSize' ng-show='peopleInput'>
 		<h2 class='headline'>Number of Guests Per Table</h2>
 		<form name='numOfPpl'>
@@ -41,7 +41,6 @@
 			    	Guest name is required.
 			    </span>
 			  </div>
-
 
 				<!-- Only show plus-one field if guest name field is not empty -->
 			  <div ng-show="guestName">
@@ -69,11 +68,11 @@
 				  </div>
 			  </div>
 
-		  </div>
+		  </div> 
+	  </div> 
 
-	  </div>
-	  </form>
-  </div>
+	  </form> <!-- End of guest input form -->
+  </div> <!-- End of guest input div -->
 
   <!-- Constraint View -->
   <div ng-show="constraintInput" class="color-border">

@@ -1,6 +1,6 @@
 angular.module('seatly.guestInput')
-.factory('guestInputFactory', function($http){
-	var addAllGuests = function(guestsArray){
+.factory('guestInputFactory', function($http) {
+	var addAllGuests = function(guestsArray) {
 		return $http({
 			method: 'POST',
 			url: '/guest/create',
@@ -22,4 +22,3 @@ angular.module('seatly.guestInput')
 	};
 
 });
-
