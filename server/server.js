@@ -1,18 +1,18 @@
-/* this will be our express server */
+/* this is our express server */
 
 var express = require('express');
 var mongoose = require('mongoose');
 var app = express();
 
-mongoose.connect('mongodb://localhost/seatly');
+var host = process.env.host || 'localhost';
+var port = process.env.port || 8000;
+
+// connect to mongoose
+mongoose.connect('mongodb://' + host + '/seatly');  // TODO: change to production env
 
 require('./router.js')(app, express);
 
-app.listen(8000);
+app.listen(port, host); // TODO: change to production env
 
+// export it
 module.exports = app;
-
-
-// app.get('/', function(req, res) {
-//   res.send('Hellooooo WOOOOOORLD!!!!');
-// });

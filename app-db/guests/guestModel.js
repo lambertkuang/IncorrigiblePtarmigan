@@ -12,15 +12,8 @@ var GuestSchema = mongoose.Schema({
   user: String
 });
 
+// create the model
 var Guests = mongoose.model('Guests', GuestSchema);
 
+// export it
 module.exports = Guests;
-
-
-
-
-//guest name 
-//guest id (mongoose adds it by default)
-// plus 1 id
-//dining table id
-// constraints

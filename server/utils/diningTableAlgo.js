@@ -1,6 +1,9 @@
+// Algorithm to sort guests into tables
+
 // input: an array of guest objects, max number of guests per table
 // Can deal with +1s and constraints
 // Output: array of arrays where each subarray represents a diningtable populated by elements that are guest objects
+
 /*
 EDGE cases where our algorithm could be improved:
 - if table has odd number of seats and there are more couples than we can fit, it's going to exceed number of seats per table
@@ -84,8 +87,8 @@ exports.makeDiningTables = function(guests, numPerTable) {
     }
   };
 
-  // this function takes an array of indiviudal guests (guest objects) and a matrix of dining Tables (array of array). It modifies the diningTables array by pushing
-  // individual guests into the tables
+  // this function takes an array of indiviudal guests (guest objects) and a matrix of dining Tables (array of array).
+  // It modifies the diningTables array by pushing individual guests into the tables
   var addIndividualsToTables = function(guests, diningTables, respectConstraints) {
     if(respectConstraints === undefined) respectConstraints = true; 
     var currTable;
@@ -192,13 +195,6 @@ exports.makeDiningTables = function(guests, numPerTable) {
     }
   }
 
-  // console logs for testing
-  // console.log('groups',groupedGuests);
-  // console.log('cc', couplesWithConstraints);
-  // console.log('cc', couplesWithoutConstraints);
-  // console.log('ss', singlesWithConstraints);
-  // console.log('ss', singlesWithoutConstraints);
-
   // generate a matrix of tables that we'll need to fill
   var allTables = [];
   for (var k = 0; k < numTables; k++) {
@@ -219,66 +215,3 @@ exports.makeDiningTables = function(guests, numPerTable) {
 
   return allTables;
 };
-
-
-// var guests = [
-//   {guestName: 'test', friendName: 'testFriend'},
-//   {guestName: 'testFriend', friendName: 'test'},
-//   {guestName: 'test1', friendName: 'testFriend1'},
-//   {guestName: 'testFriend1', friendName: 'test1'},
-//   {guestName: 'noFriend2', friendName: ''},
-//   {guestName: 'test2', friendName: 'testFriend2'},
-//   {guestName: 'testFriend2', friendName: 'test2'},
-//   {guestName: 'test3', friendName: 'testFriend3'},
-//   {guestName: 'testFriend3', friendName: 'test3'},
-//   {guestName: 'noFriend', friendName: ''},
-//   {guestName: 'test4', friendName: 'testFriend4'},
-//   {guestName: 'testFriend4', friendName: 'test4'}
-// ];
-
-// var guests = [{"_id":"55c92b11358e98cc3c57ed0a","guestName":"marco","friendName":"lambert","__v":0,"constraints":[]},{"_id":"55c92b11358e98cc3c57ed0b","guestName":"lambert","friendName":"marco","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed10","guestName":"jenny","friendName":"kiri","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed11","guestName":"kiri","friendName":"jenny","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed12","guestName":"jennie","friendName":"taco","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed13","guestName":"taco","friendName":"jennie","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed14","guestName":"help","friendName":"please","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed15","guestName":"please","friendName":"help","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed16","guestName":"much","friendName":"faster","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed17","guestName":"faster","friendName":"much","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed18","guestName":"daft","friendName":"punk","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed19","guestName":"punk","friendName":"daft","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed1a","guestName":"rivers","friendName":"cuomo","__v":0,"constraints":[]},{"_id":"55c92b40358e98cc3c57ed1b","guestName":"cuomo","friendName":"rivers","__v":0,"constraints":[]}];
-
-// var guests = [
-//   {guestName: 'test', friendName: 'testFriend', constraints:['test1']},
-//   {guestName: 'testFriend', friendName: 'test', constraints:[]},
-//   {guestName: 'test1', friendName: 'testFriend1', constraints:[]},
-//   {guestName: 'testFriend1', friendName: 'test1', constraints:['test']},
-//   {guestName: 'noFriend2', friendName: '', constraints:[]},
-//   {guestName: 'test2', friendName: 'testFriend2', constraints:[]},
-//   {guestName: 'testFriend2', friendName: 'test2', constraints:[]},
-//   {guestName: 'test3', friendName: 'testFriend3', constraints:[]},
-//   {guestName: 'testFriend3', friendName: 'test3', constraints:[]},
-//   {guestName: 'noFriend', friendName: '', constraints:['test3']},
-//   {guestName: 'test4', friendName: 'testFriend4',constraints:['test3']},
-//   {guestName: 'testFriend4', friendName: 'test4', constraints:[]}
-// ];
-
-
-
-// var guests = [
-//   {guestName: 'test', friendName: 'testFriend'},
-//   {guestName: 'testFriend', friendName: 'test'},
-//   {guestName: 'test1', friendName: ''},
-//   {guestName: 'testFriend1', friendName: ''},
-//   {guestName: 'noFriend2', friendName: ''},
-//   {guestName: 'test2', friendName: 'testFriend2'},
-//   {guestName: 'testFriend2', friendName: 'test2'},
-//   {guestName: 'test3', friendName: ''},
-//   {guestName: 'testFriend3', friendName: ''},
-//   {guestName: 'noFriend', friendName: ''},
-//   {guestName: 'test4', friendName: ''},
-//   {guestName: 'testFriend4', friendName: ''}
-// ];
-
-// console.log('----------------------this is the result \n',exports.makeDiningTables(guests, 3));
-
-
-
-
-
-
-
-
-
-
-
