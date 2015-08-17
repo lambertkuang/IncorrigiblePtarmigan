@@ -50,6 +50,7 @@ angular.module('seatly.guestInput', [])
 
     // create and validate friend as new guest object
     // TODO: add validation so that a duplicate friendname will not be included as friendName property of guest object
+    // TODO: Ensure that a unique friendname cannot be added if the primary guestname is a duplicate 
 		if ($scope.friendName) {
 			var newGuest = {
 				'guestName': $scope.friendName,
@@ -58,13 +59,12 @@ angular.module('seatly.guestInput', [])
 				'constraints': []
 			};
       checkForDuplicate($scope.guests, 'guestName', newGuest.guestName);
+		}
 
     if ($scope.showError === false) {
-
-			$scope.guests.push(newGuest);
+      $scope.guests.push(newGuest);
     }
 
-		}
     console.log($scope.guests);
 		// reset the guest input fields
 		$scope.guestName = '';
