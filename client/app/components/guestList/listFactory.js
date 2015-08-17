@@ -56,6 +56,8 @@ angular.module('seatly.list')
           console.log(new Error(err));
         }); // end of getGuest
       }
+      // if there are no constraints, go on to next section
+      resolve();
     }) // end of q function
     .then(function(res) {  // then remove any +1 ties they had
       if (guestObj.friendName) {

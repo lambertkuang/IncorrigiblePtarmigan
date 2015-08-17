@@ -30,11 +30,9 @@ angular.module('seatly.list', [])
 
     List.getGuest(guestName)
     .then(function(guest) {
-      console.log(guest.data);
       $scope.guest = guest.data;
       // hide the list view and unhide the edit view
       $scope.inEdit = true;
-      console.log($scope.guest);
     })
     .catch(function(err) {
       console.log(new Error(err));
