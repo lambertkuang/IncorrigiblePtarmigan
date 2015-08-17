@@ -40,14 +40,15 @@ angular.module('seatly.list')
           // this should always be fine but just in case:
           if (guestIndex !== -1) {
             constrObj.data.constraints.splice(guestIndex, 1);
-            var changedObj = {'changes': [constrObj.guestName, {'constraints': constrObj.constraints}]};
+            var changedObj = {'changes': [constrObj.data.guestName, {'constraints': constrObj.data.constraints}]};
 
             editGuest(changedObj)
             .then(function() {
-              console.log('successfully changed contraint obj');
+              console.log('saved something');
+              resolve();
             })
             .catch(function(err) {
-              console.log(new Error(err));
+              reject(new Error(err));
             }); // end of editGuest
           }
         })
