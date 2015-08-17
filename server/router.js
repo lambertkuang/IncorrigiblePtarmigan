@@ -1,4 +1,4 @@
-/* this will be our router for our express server */
+// dependencies
 var mongoose = require('mongoose');
 var Guest = require('../app-db/guests/guestModel');
 var User = require('../app-db/users/userModel');
@@ -27,8 +27,7 @@ module.exports = function(app, express) {
 //                 AUTHENTICATION                     //
 ////////////////////////////////////////////////////////
 
-// SIGN UP USER
-// this is callback system, should refactor to promises
+  // SIGN UP USER
   app.post('/user/signup', function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
@@ -97,7 +96,7 @@ module.exports = function(app, express) {
 //                     GUEST INFO                     //
 ////////////////////////////////////////////////////////
 
-// client-side posts a list of guests
+  // client-side posts a list of guests
   app.post('/guest/create', function(req, res) {
     console.log('------------------------------');
     console.log(req.body.guests[0]);
@@ -119,20 +118,6 @@ module.exports = function(app, express) {
     res.send(200);
   });
 
-//retrieves all guests
-  app.get('/guest', function(req, res){
-    Guest.find(function(err, guests){
-      if(err) return console.log(err);
-      //console.log(guests);
-      console.log(184, 'guests gotten');
-      if(guests) {
-        res.send(200, guests);
-      } else {
-        res.send(404);
-      }
-    });
-  });
-
   // retrieve one guest
   app.post('/guest/one', function(req, res) {
     Guest.findOne({'guestName': req.body.name}, function(err, guest) {
@@ -145,7 +130,7 @@ module.exports = function(app, express) {
     });
   });
 
-// edit guest properties
+  // edit guest properties
   app.put('/guest/edit', function(req, res){
     var changes = req.body.changes;
     console.log('-------------->', changes);
@@ -175,18 +160,10 @@ module.exports = function(app, express) {
     });
   });
 
-  // drop all guests, regardless of user
-  app.post('/guest/clear', function(req, res) {
-    Guest.find().remove(function(err) {
-      if (err) return console.log(err);
-      res.send(200);
-    });
-  });
 
 ////////////////////////////////////////////////////////
 //                      ALGO INFO                     //
 ////////////////////////////////////////////////////////
-
 
   // This will use the sorting algorithm to arrange the list of guests into multiple dining tables
   // Client will pass in numPerTable
@@ -235,6 +212,48 @@ module.exports = function(app, express) {
   });
 
 ////////////////////////////////////////////////////////
+//                 DEVELOPER ROUTES                   //
+////////////////////////////////////////////////////////
+  // THESE ARE ALL COMMENTED OUT FOR DEPLOYMENT
+
+
+  // // drop all guests, regardless of user
+  // app.post('/dev/clear', function(req, res) {
+  //   Guest.find().remove(function(err) {
+  //     if (err) return console.log(err);
+  //     res.send(200);
+  //   });
+  // });
+
+  // // view all guests in the browser
+  // app.get('/dev/view', function(req, res){
+  //   Guest.find(function(err, guests){
+  //     if(err) return console.log(err);
+  //     //console.log(guests);
+  //     console.log(184, 'guests gotten');
+  //     if(guests) {
+  //       res.send(200, guests);
+  //     } else {
+  //       res.send(404);
+  //     }
+  //   });
+  // });
+
+  // developer info: 
+  /* example objects for tests
+
+  Note: in Postman when doing a 'POST', it's important to input in the body by selection the 'raw' option and
+  using a json format like so:
+  {"guests":[{"guestName":"marco","friendName":"Lambert", "constraints":[]}]}
+
+  these are not valid syntax for postman
+  {guests:[{guestName:'marco',friendName:'Lambert'},{guestName:'Lambert',friendName:'marco'},{guestName:'Kiri'}]}
+  [{guestName:'marco',friendName:'Lambert'},{guestName:'Lambert',friendName:'marco'},{guestName:'Kiri'}]
+  [{guestName:'marco',friendName:'Lambert', constraints:[]}]
+  */
+
+
+////////////////////////////////////////////////////////
 //                  EVERYTHING ELSE                   //
 ////////////////////////////////////////////////////////
 
@@ -244,27 +263,3 @@ module.exports = function(app, express) {
   });
 
 }; // end export
-
-
-// detect the url route
-// read the data
-// post to the database
-
-
-
-// Add guests
-// Add relationships (+1s)
-// Add constraints ('enemies')
-
-/* example objects for tests
-
-Note: in Postman when doing a 'POST', it's important to input in the body by selection the 'raw' option and
-using a json format like so:
-{"guests":[{"guestName":"marco","friendName":"Lambert", "constraints":[]}]}
-
-
-these are not valid syntax for postman
-{guests:[{guestName:'marco',friendName:'Lambert'},{guestName:'Lambert',friendName:'marco'},{guestName:'Kiri'}]}
-[{guestName:'marco',friendName:'Lambert'},{guestName:'Lambert',friendName:'marco'},{guestName:'Kiri'}]
-[{guestName:'marco',friendName:'Lambert', constraints:[]}]
-*/
