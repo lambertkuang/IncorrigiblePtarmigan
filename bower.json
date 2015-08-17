@@ -2,7 +2,7 @@
   "name": "IncorrigiblePtarmigan",
   "version": "0.0.1",
   "main": [
-    "client/models/AppModel.js"
+    "client/app/app.module.js"
   ],
   "dependencies": {
     "underscore": "~1.8.3",
