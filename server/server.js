@@ -4,8 +4,8 @@ var express = require('express');
 var mongoose = require('mongoose');
 var app = express();
 
-var host = process.env.host || 'localhost';
-var port = process.env.port || 5000;
+var host = process.env.HOST || 'localhost';
+var port = process.env.PORT || 5000;
 var localuri = 'mongodb://localhost/seatly';
 var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || localuri;
 
