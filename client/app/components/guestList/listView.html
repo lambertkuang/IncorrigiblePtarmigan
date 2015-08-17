@@ -14,13 +14,13 @@
   </div>
 </div>
 
-<div class="container" ng-controller='listController'>
-  <div class="row" ng-hide='inEdit' id='list'>
+<div class="container" ng-controller="listController">
+  <div class="row" ng-hide="inEdit" id="list">
     <div class="col-md-12">
       <h1 class="all-guests-head">Seating Assignments by Table</h1>
     </div>
       <h4 class="flex-item">Number of Tables: {{ diningTbls.length }} </h4>
-    <div class='listview'>
+    <div class="listview">
 
       <table class="table table-bordered" ng-repeat="diningTbl in diningTbls | orderBy: 'diningTableName' ">
       <caption class="bold">Table {{ diningTbl.diningTableName }}</caption>
@@ -35,7 +35,7 @@
         <tr ng-repeat="guest in diningTbl.guestsAtTable">
           <td class="fix-width highlight-blue guest-name" ng-click="fauxRedirect(guest.guestName)">{{ guest.guestName }}</td>
           <td class="fix-width" ng-click="fauxRedirect(guest.guestName)">{{ guest.friendName }}</td>
-          <td class="fix-width-xl" ng-click='fauxRedirect(guest.guestName)'><div ng-repeat="enemy in guest.constraints">{{ enemy }}</div></td>
+          <td class="fix-width-xl" ng-click="fauxRedirect(guest.guestName)"><div ng-repeat="enemy in guest.constraints">{{ enemy }}</div></td>
         </tr>
         </tbody>
       </table>
@@ -58,8 +58,8 @@
       </div>
 
       <div class="signin-and-up">
-        <button class='btn btn-default' ng-click='deleteGuest()'>Delete Guest</button>
-        <button class='btn btn-default add-next-guest' ng-click='reverseRedirect()'>Cancel</button>
+        <button class="btn btn-default" ng-click="deleteGuest()">Delete Guest</button>
+        <button class="btn btn-default add-next-guest" ng-click="reverseRedirect()">Cancel</button>
       </div>
     </form>
   </div>
