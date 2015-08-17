@@ -17,45 +17,25 @@
 <div class="container" ng-controller='listController'>
   <div class="row" ng-hide='inEdit' id='list'>
     <div class="col-md-12">
-      <h1 class="headline">All Guests</h1>
+      <h1 class="all-guests-head">Seating Assignments by Table</h1>
     </div>
+      <h4 class="flex-item">Number of Tables: {{ diningTbls.length }} </h4>
     <div class='listview'>
-      <h5>Number of Tables: {{ diningTbls.length }} </h5>
-   <!--     <tr>
-          <th>Table Name</th>
-          <th colspan="0"> {{ diningTbl.diningTableName }} </th>
-        </tr> -->
 
-
-<!--   <table class="table">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
- -->
-
-      <table class="table table-hover" ng-repeat="diningTbl in diningTbls">
-      <thead>Table {{ diningTbl.diningTableName }}</thead>
-        <tr>
+      <table class="table table-hover table-bordered" ng-repeat="diningTbl in diningTbls">
+      <caption class="bold">Table {{ diningTbl.diningTableName }}</caption>
+      <thead>
+        <tr class="blue">
           <th>Guest</th>
           <th>+1</th>
           <th>Enemies</th>
         </tr>
+        </thead>
         <tbody>
         <tr ng-repeat="guest in diningTbl.guestsAtTable">
-          <td class="name" ng-click="fauxRedirect(guest.guestName)">{{ guest.guestName }}</td>
-          <td ng-click="fauxRedirect(guest.guestName)">{{ guest.friendName }}</td>
-          <td ng-repeat="enemy in guest.constraints">{{ enemy }}</td>
-          <!-- <td ng-click='fauxRedirect(guest.guestName)'>{{ guest.constraints }}</td> -->
+          <td class="fix-width highlight-blue" ng-click="fauxRedirect(guest.guestName)">{{ guest.guestName }}</td>
+          <td class="fix-width" ng-click="fauxRedirect(guest.guestName)">{{ guest.friendName }}</td>
+          <td class="fix-width-xl" ng-click='fauxRedirect(guest.guestName)'><div ng-repeat="enemy in guest.constraints">{{ enemy }}</div></td>
         </tr>
         </tbody>
       </table>
@@ -63,7 +43,7 @@
   </div>
 
   <div ng-show="inEdit" id="edit">
-    <h1 class="headline">Guest Information</h1>
+    <h1 class="all-guests-head">Guest Information</h1>
     <form name="editGuestForm">
       <div class="guest-info"> 
         <div>
@@ -76,6 +56,7 @@
           <strong>Enemies</strong>: <span ng-repeat="enemy in guest.constraints">{{ enemy }}</span>
         </div>
       </div>
+
       <div class="signin-and-up">
         <button class='btn btn-default' ng-click='deleteGuest()'>Delete Guest</button>
         <button class='btn btn-default add-next-guest' ng-click='reverseRedirect()'>Cancel</button>

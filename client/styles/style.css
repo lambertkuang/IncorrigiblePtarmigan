@@ -119,45 +119,44 @@ h1, .link {
 	color: #473E3F;
 }
 
-/*table, th, td {
-	border: 1px solid black;
-	padding: 5px;
+.all-guests-head {
+	color: #555273;
 }
-*/
-/*.name:hover {
-	background-color: #218C8D;
-	cursor: pointer;
-}*/
-
-/*tr:nth-child(even) {
-	background-color: #6CCECB; 
-}*/
-
-/*tr:nth-child(odd) {
-	background-color: #8EDC9D;
+.fix-width {
+	width: 120px;
 }
-*/
 
-/*tr:nth-child(2) {
-	background-color: #F9E559;
+.fix-width-xl {
+	width: 300px;
 }
-tr:nth-child(1) {
-	background-color: #EF7126;
-}*/
+
+.blue {
+	background-color: #b6d5e1;
+}
+
+.highlight-blue {
+	background-color: #e2eff1;
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.bold {
+	font-weight: bold;
+	font-size: 12pt;
+	color: #65799b;
+}
 
 h5 .listview {
 	text-align: center;
 	margin: 10px 0;
 }
-
-/*table: {
-	margin: 10px;
-}*/
-
-/*.diningTables {
-	width: 500px;
-	margin: 20px auto;
-}*/
 
 .people {
 	width: 300px;
