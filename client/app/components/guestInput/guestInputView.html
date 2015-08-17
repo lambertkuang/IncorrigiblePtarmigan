@@ -15,14 +15,15 @@
 </div>
 
 <div class="container default" ng-controller="guestInputCtrl">
-	<div class="tableSize" ng-show="peopleInput">
-		<h2 class="headline">Number of Guests Per Table</h2>
-		<form name='numOfPpl'>
-			<input class='people' ng-model='peoplePerTable' placeholder='Number of guests per table' required>
-			<button class="btn btn-default add-next-guest" ng-click='moveOn()' ng-disabled="numOfPpl.$invalid">Add Guest Information</button>
+  <!-- view to input guests per table -->
+	<div class="shaded-box" ng-show="peopleInput">
+		<h2 class="headline">Guests Per Table</h2>
+		<form name="numOfPpl">
+			<input class="table-size-input" ng-model="peoplePerTable" placeholder="Number required" required>
+			<button class="btn btn-default add-next-guest" ng-click="moveOn()" ng-disabled="numOfPpl.$invalid">Add Guest Information</button>
 		</form>
 	</div>
-
+  <!-- view to input guests -->
 	<div ng-show="guestInput">
 	  <form name="guestInputForm" role="form" novalidate>
 

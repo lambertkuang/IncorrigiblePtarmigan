@@ -1,6 +1,47 @@
+/******************************/
+/* Site-wide styling */
+/******************************/
+
 body {
 	font-family: 'Open Sans', sans-serif;
 }
+
+.default {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+li {
+	text-decoration: none;
+}
+
+.headline {
+	color: #218C8D;
+}
+
+h1, .link {
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+.blue {
+	background-color: #b6d5e1;
+}
+
+.highlight-blue {
+	background-color: #e2eff1;
+}
+
+.signout {
+	text-align: center;
+	vertical-align: center;
+	margin-top: 7px;
+}
+
+
+/******************************/
+/* Sign-in and Sign-up */
+/******************************/
 
 .flex-container {
 	display: -webkit-flex; /* for safari */
@@ -21,15 +62,6 @@ body {
   border-radius: 5%;
 }
 
-.default {
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-
-li {
-	text-decoration: none;
-}
-
 .welcome {
 	color: #3B1E2D;
 	font-family: 'Bad Script', cursive; 
@@ -38,66 +70,8 @@ li {
 	margin-bottom: 30px;
 }
 
-.headline {
-	color: #218C8D;
-}
-
-.constraints-header {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
 .signup {
 	background-color: #3B1E2D;
-}
-
-.input-list {
-	margin-top: 20px;
-}
-
-.highlight-box {
-	background-color: #e2eff1;
-	text-indent: 10px;
-}
-
-.color-border {
-	border-style: solid;
-	border-width: 3px;
-	border-color: #65799b;
-	padding-left: 20px;
-	padding-bottom: 20px;
-}
-
-.add-next-guest {
-	background-color: #6CCECB;
-	margin-bottom: 10px;
-	margin-top: 10px;
-}
-
-.plus-one {
-  margin-top: 20px;
-  color: #473E3F;
-}
-
-.done-adding {
-	margin-bottom: 10px;
-	font-weight: bold;
-}
-
-.center-img {
-	text-align: center;
-  margin: 40px 0px 0px 0px;
-  border: 7px solid black;
-  border-radius: 20px;
-}
-
-h1, .link {
-	padding-bottom: 10px;
-	text-align: center;
-}
-
-.auth {
-	text-align: center;
 }
 
 .signin-and-up {
@@ -113,29 +87,99 @@ h1, .link {
 	margin: 0px 0 10px 0;
 }
 
+.auth {
+	text-align: center;
+}
+
 #auth-label {
 	text-align: left;
 	text-indent: 3px;
 	color: #473E3F;
 }
 
-.all-guests-head {
-	color: #555273;
-}
-.fix-width {
-	width: 120px;
-}
 
-.fix-width-xl {
+/******************************/
+/* Guest Input view */
+/******************************/
+
+/* Guests per table */
+
+.table-size-input {
 	width: 300px;
+	height: 40px;
+	margin: 20px 0;
+	text-align: center;
 }
 
-.blue {
-	background-color: #b6d5e1;
-}
-
-.highlight-blue {
+.shaded-box {
+	width: 400px;
+	margin: 0 auto;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	text-align: center;
 	background-color: #e2eff1;
+	border-radius: 10px;
+}
+
+/* Add guests and +1's */
+
+.add-next-guest {
+	background-color: #6CCECB;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.input-list {
+	margin-top: 20px;
+}
+
+.highlight-box {
+	background-color: #e2eff1;
+	text-indent: 10px;
+}
+
+.plus-one {
+  margin-top: 20px;
+  color: #473E3F;
+}
+
+.done-adding {
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+/* Add Enemies view */
+
+.constraints-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.color-border {
+	border-style: solid;
+	border-width: 3px;
+	border-color: #65799b;
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+
+
+/***********************************/
+/* Guest List and Edit Guest view */
+/***********************************/
+
+.guest-name {
+	cursor: pointer;
+}
+
+.guest-name:hover {
+	background-color: #65799b;
+	color: #FFF;
+}
+
+div .guest-info {
+	text-align: center;
+	margin-bottom: 10px
 }
 
 th, td {
@@ -158,34 +202,16 @@ h5 .listview {
 	margin: 10px 0;
 }
 
-.people {
+.all-guests-head {
+	color: #555273;
+}
+
+.fix-width {
+	width: 120px;
+}
+
+.fix-width-xl {
 	width: 300px;
-	height: 40px;
-	margin: 20px 0;
-	text-align: center;
-}
-
-.tableSize {
-	width: 400px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.signout {
-	text-align: center;
-	vertical-align: center;
-	margin-top: 7px;
-}
-
-#edit {
-	width: 400px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-div .guest-info {
-	text-align: center;
-	margin-bottom: 10px
 }
 
 div #edit {
@@ -199,15 +225,4 @@ div #edit {
 	padding-bottom: 20px;
 	padding-left: 20px;
 	border-radius: 10px;
-}
-
-/* guests */
-
-.guest-name {
-	cursor: pointer;
-}
-
-.guest-name:hover {
-	background-color: #65799b;
-	color: #FFF;
 }
