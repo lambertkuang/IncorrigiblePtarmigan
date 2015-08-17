@@ -16,7 +16,7 @@ module.exports = function(app, express) {
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../client'));
-  app.use(express.static(__dirname + '/../bower_components'));
+  app.use('/bower_components', express.static(__dirname + '/../bower_components'));
 
   // authentication middleware used to decode token and make user available on the request
   // request.user will be the username
