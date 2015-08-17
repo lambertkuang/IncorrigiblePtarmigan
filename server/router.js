@@ -16,6 +16,7 @@ module.exports = function(app, express) {
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../client'));
+  app.use('/bower_components', express.static(__dirname + '/../bower_components'));
 
   // authentication middleware used to decode token and make user available on the request
   // request.user will be the username
@@ -248,7 +249,7 @@ module.exports = function(app, express) {
   //   });
   // });
 
-  // developer info: 
+  // developer info:
   /* example objects for tests
 
   Note: in Postman when doing a 'POST', it's important to input in the body by selection the 'raw' option and
