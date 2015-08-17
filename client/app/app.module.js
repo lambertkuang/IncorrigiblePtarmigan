@@ -2,8 +2,6 @@ angular.module('seatly', [
 	'seatly.guestInput',
 	'seatly.auth',
   'seatly.authServices',
-	// 'seatly.edit',
-	// 'seatly.start',
   'seatly.list',
   'ngRoute'
 ])
@@ -17,12 +15,11 @@ angular.module('seatly', [
         templateUrl: 'app/components/auth/signupView.html',
         controller: 'AuthController'
       })
-      // .when('/', {
-      //   // default view before we implement auth will be edit page
-      //   templateUrl: 'app/components/edit/editView.html',
-      //   controller: 'editController',
-      //   controllerAs: 'edit'
-      // })
+      .when('/', {
+        templateUrl: 'app/components/guestInput/guestInputView.html',
+        controller: 'guestInputCtrl',
+        controllerAs: 'guestInput'
+      })
       .when('/list', {
         templateUrl: 'app/components/guestList/listView.html',
         controller: 'listController'
@@ -32,7 +29,7 @@ angular.module('seatly', [
         controller: 'guestInputCtrl',
         controllerAs: 'guestInput'
       });
-    // $locationProvider.html5Mode(true);
+
     $httpProvider.interceptors.push('AttachTokens');
   })
   .factory('AttachTokens', function($window) {
@@ -56,4 +53,3 @@ angular.module('seatly', [
       }
     });
   });
-

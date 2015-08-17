@@ -4,34 +4,28 @@
   <meta charset="utf-8">
 	<title>Seatly</title>
 	<base href="/">
-	<style>
-     body { padding-top:50px; padding-bottom:50px;  }
-	</style>
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="styles/style.css">
-
   <!-- Fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans|Bad+Script' rel='stylesheet' type='text/css'>
-
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans|Bad+Script" rel="stylesheet" type="text/css">
   <!-- Load dependencies -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/underscore/underscore-min.js"></script>
-
 </head>
 
-<body>
+<body class="default">
 
   <div ng-view></div>
-
+  
   <script src="app/components/auth/auth.js"></script>
   <script src="app/components/guestInput/guestInputController.js"></script>
   <script src="app/components/guestInput/guestInputFactory.js"></script>
   <script src="app/components/auth/authServices.js"></script>
-  <!-- <script src="app/components/start/startController.js"></script> -->
+
   <!-- Include factory scripts -->
   <script src="app/components/guestList/listController.js"></script>
   <script src="app/components/guestList/listFactory.js"></script>

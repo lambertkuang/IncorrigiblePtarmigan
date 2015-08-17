@@ -1,20 +1,18 @@
 angular.module('seatly.list', [])
 .controller('listController',['$scope', 'List', 'Auth', function($scope, List, Auth) {
-  // change scope variables to center around
-  // a list of tables with guests in those tables
+  // scope variables reflect a list of tables, with guests at those tables
   $scope.diningTbls = [];
 
-  // the guest currently being edited
+  // guest currently being edited
   $scope.guest = {};
 
-  // this will toggle based on the state we're in:
-  // list view or edit. It's tied to ng-hide.
+  // toggle based on the state we're in: list view or edit; tied to ng-hide
   $scope.inEdit = false;
 
   // render all of the guests in the table
   $scope.init = function() {
     List.viewGuests()
-    // this function will get a list of tables under .data
+    // get a list of tables under .data
     .then(function(allGuests) {
       $scope.diningTbls = allGuests.data;
     })
@@ -25,9 +23,7 @@ angular.module('seatly.list', [])
 
   // find a particular guest and go into edit view
   $scope.fauxRedirect = function(guestName) {
-    // NOTE: NOT MVP. uncomment when you
-    // want to keep working on it
-
+    // NOTE: The below is NOT a MVP feature. uncomment when you want to keep working on it
     // List.getGuest(guestName)
     // .then(function(guest) {
     //   console.log(guest.data);
@@ -40,8 +36,7 @@ angular.module('seatly.list', [])
     // });
   };
 
-  // save the edited information to db
-  // and go into list view
+  // save the edited information to db and go into list view
   $scope.editGuest = function()  {
     // format the information in the way the server expects
     // TODO only provide the information that has changed
@@ -60,7 +55,7 @@ angular.module('seatly.list', [])
         friendName: '',
         contraints: [],
         diningTableId: null
-      }
+      };
       $scope.inEdit = false;
       $scope.init();
       return res;
