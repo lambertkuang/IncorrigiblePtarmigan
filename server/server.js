@@ -4,7 +4,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var app = express();
 
-var host = process.env.HOST || 'localhost';
+// var host = process.env.HOST || 'localhost';
 var port = process.env.PORT || 5000;
 var localuri = 'mongodb://localhost/seatly';
 var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || localuri;
@@ -20,7 +20,7 @@ mongoose.connect(uristring, function(err, res) {
 
 require('./router.js')(app, express);
 
-app.listen(port, host); // TODO: change to production env
+app.listen(port); // TODO: change to production env
 
 // export it
 module.exports = app;
