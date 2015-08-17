@@ -124,10 +124,10 @@ table, th, td {
 	padding: 5px;
 }
 
-/*.name:hover {
+.name:hover {
 	background-color: #218C8D;
 	cursor: pointer;
-}*/
+}
 
 tr:nth-child(even) {
 	background-color: #6CCECB; 
