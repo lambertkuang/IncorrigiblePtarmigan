@@ -51,12 +51,12 @@ li {
 	background-color: #3B1E2D;
 }
 
-div .input-list {
-	margin-top: 10px;
+.input-list {
+	margin-top: 20px;
 }
 
 .highlight-box {
-	background-color: #FFFFCC;
+	background-color: #e2eff1;
 	text-indent: 10px;
 }
 
