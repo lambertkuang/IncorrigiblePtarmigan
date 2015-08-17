@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var app = express();
 
 var host = process.env.host || 'localhost';
-var port = process.env.port || 8000;
+var port = process.env.port || 5000;
 
 // connect to mongoose
 mongoose.connect('mongodb://' + host + '/seatly');  // TODO: change to production env
