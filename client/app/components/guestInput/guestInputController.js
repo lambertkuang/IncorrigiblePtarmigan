@@ -59,11 +59,13 @@ angular.module('seatly.guestInput', [])
 				'constraints': []
 			};
       checkForDuplicate($scope.guests, 'guestName', newGuest.guestName);
-		}
-
-    if ($scope.showError === false) {
-      $scope.guests.push(newGuest);
+     
+      if ($scope.showError === false) {
+        $scope.guests.push(newGuest);
+      }
+      
     }
+
 
     console.log($scope.guests);
 		// reset the guest input fields
