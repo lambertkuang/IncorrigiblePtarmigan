@@ -16,7 +16,7 @@
 
 <div class="container default" ng-controller="guestInputCtrl">
   <!-- view to input guests per table -->
-	<div class="shaded-box" ng-show="peopleInput">
+	<div class="shaded-box color-border" ng-show="peopleInput">
 		<h2 class="headline">Guests Per Table</h2>
 		<form name="numOfPpl">
 			<input class="table-size-input" ng-model="peoplePerTable" placeholder="Number required" required>
@@ -106,16 +106,16 @@
 		  </div>
 	  </div>
 
-	  <div class="row">
-	  	<div class="col-md-3">
-	  		<button class="btn btn-default add-next-guest" ng-click="addConstraint()">Update and Add More Enemies</button>
-	  	</div>
-	  </div>
+	  <div class="flex-item">
+	  	<!-- <div class="col-md-3"> -->
+	  		<button class="btn btn-default add-next-guest" id="top-margin" ng-click="addConstraint()">Update and Add More Enemies</button>
+	  	<!-- </div> -->
+	  <!-- </div> -->
 
-	  <div class="row">
-	  	<div class="col-md-3">
+	  <div class="flex-item">
+	  	<!-- <div class="col-md-3"> -->
 	  		<button class="btn btn-default done-adding" ng-click="addAllGuests()">Done: Get My Chart!</button>
-	  	</div>
+	  	<!-- </div> -->
 	  </div>
   </div>
 

@@ -38,6 +38,17 @@ h1, .link {
 	margin-top: 7px;
 }
 
+.color-border {
+	border-style: solid;
+	border-width: 3px;
+	border-color: #65799b;
+	padding-bottom: 20px;
+}
+
+#top-margin {
+	margin-top: 50px;
+}
+
 
 /******************************/
 /* Sign-in and Sign-up */
@@ -153,14 +164,6 @@ h1, .link {
 .constraints-header {
   margin-bottom: 30px;
   text-align: center;
-}
-
-.color-border {
-	border-style: solid;
-	border-width: 3px;
-	border-color: #65799b;
-	padding-left: 20px;
-	padding-bottom: 20px;
 }
 
 
