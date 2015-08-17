@@ -39,33 +39,6 @@ angular.module('seatly.list', [])
     });
   };
 
-  // save the edited information to db and go into list view
-  $scope.editGuest = function()  {
-    // format the information in the way the server expects
-    // TODO only provide the information that has changed
-    // TODO change information of any guest affected by this change
-    var obj = {
-      changes: [$scope.guest.guestName, $scope.guest]
-    };
-
-    // pass object through to factory
-    return List.editGuest(obj)
-    // no matter if error or not, clear fields
-    .finally(function(res) {
-      // TODO redirect with $location to guestListView
-      $scope.guest = {
-        guestName: '',
-        friendName: '',
-        contraints: [],
-        diningTableId: null
-      };
-
-      $scope.init();
-      $scope.inEdit = false;
-      return res;
-    });
-  };
-
   // don't save changes made to guest, but return to List View
   $scope.reverseRedirect = function() {
     $scope.inEdit = false;
@@ -78,7 +51,6 @@ angular.module('seatly.list', [])
     .then(function() {
       // must go through algorithm again if you delete guests
       $scope.reshuffle();
-      $scope.reverseRedirect();
     });
   };
 
@@ -87,6 +59,8 @@ angular.module('seatly.list', [])
     var pplPerTable = $scope.diningTbls[0].guestsAtTable.length;
     guestInputFactory.sortGuests(pplPerTable)
     .then(function() {
+      // ensures that the view is in list, not edit
+      $scope.reverseRedirect();
       $scope.init();
     })
     .catch(function(err) {
