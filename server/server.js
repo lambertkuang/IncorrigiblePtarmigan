@@ -6,9 +6,17 @@ var app = express();
 
 var host = process.env.host || 'localhost';
 var port = process.env.port || 5000;
+var localuri = 'mongodb://localhost/seatly';
+var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || localuri;
 
 // connect to mongoose
-mongoose.connect('mongodb://' + host + '/seatly');  // TODO: change to production env
+mongoose.connect(uristring, function(err, res) {
+  if (err) {
+    console.log('Error connecting to: ' + uristring + ' ' + err);
+  } else {
+    console.log('Succeeded connecting to ' + uristring);
+  }
+});
 
 require('./router.js')(app, express);
 
