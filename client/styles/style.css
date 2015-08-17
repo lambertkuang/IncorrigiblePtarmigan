@@ -1,6 +1,58 @@
+/******************************/
+/* Site-wide styling */
+/******************************/
+
 body {
 	font-family: 'Open Sans', sans-serif;
 }
+
+.default {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+li {
+	text-decoration: none;
+}
+
+.headline {
+	color: #218C8D;
+}
+
+h1, .link {
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+.blue {
+	background-color: #b6d5e1;
+}
+
+.highlight-blue {
+	background-color: #e2eff1;
+}
+
+.signout {
+	text-align: center;
+	vertical-align: center;
+	margin-top: 7px;
+}
+
+.color-border {
+	border-style: solid;
+	border-width: 3px;
+	border-color: #65799b;
+	padding-bottom: 20px;
+}
+
+#top-margin {
+	margin-top: 50px;
+}
+
+
+/******************************/
+/* Sign-in and Sign-up */
+/******************************/
 
 .flex-container {
 	display: -webkit-flex; /* for safari */
@@ -21,15 +73,6 @@ body {
   border-radius: 5%;
 }
 
-.default {
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-
-li {
-	text-decoration: none;
-}
-
 .welcome {
 	color: #3B1E2D;
 	font-family: 'Bad Script', cursive; 
@@ -38,66 +81,8 @@ li {
 	margin-bottom: 30px;
 }
 
-.headline {
-	color: #218C8D;
-}
-
-.constraints-header {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
 .signup {
 	background-color: #3B1E2D;
-}
-
-.input-list {
-	margin-top: 20px;
-}
-
-.highlight-box {
-	background-color: #e2eff1;
-	text-indent: 10px;
-}
-
-.color-border {
-	border-style: solid;
-	border-width: 3px;
-	border-color: #8EDC9D;
-	padding-left: 20px;
-	padding-bottom: 20px;
-}
-
-.add-next-guest {
-	background-color: #6CCECB;
-	margin-bottom: 10px;
-	margin-top: 10px;
-}
-
-.plus-one {
-  margin-top: 20px;
-  color: #473E3F;
-}
-
-.done-adding {
-	margin-bottom: 10px;
-	font-weight: bold;
-}
-
-.center-img {
-	text-align: center;
-  margin: 40px 0px 0px 0px;
-  border: 7px solid black;
-  border-radius: 20px;
-}
-
-h1, .link {
-	padding-bottom: 10px;
-	text-align: center;
-}
-
-.auth {
-	text-align: center;
 }
 
 .signin-and-up {
@@ -113,81 +98,134 @@ h1, .link {
 	margin: 0px 0 10px 0;
 }
 
+.auth {
+	text-align: center;
+}
+
 #auth-label {
 	text-align: left;
 	text-indent: 3px;
 	color: #473E3F;
 }
 
-table, th, td {
-	border: 1px solid black;
-	padding: 5px;
-}
 
-.name:hover {
-	background-color: #218C8D;
-	cursor: pointer;
-}
+/******************************/
+/* Guest Input view */
+/******************************/
 
-tr:nth-child(even) {
-	background-color: #6CCECB; 
-}
+/* Guests per table */
 
-tr:nth-child(odd) {
-	background-color: #8EDC9D;
-}
-
-
-tr:nth-child(2) {
-	background-color: #F9E559;
-}
-tr:nth-child(1) {
-	background-color: #EF7126;
-}
-
-.listview h5 {
-	text-align: center;
-	margin: 10px 0;
-}
-
-table: {
-	margin: 10px;
-}
-
-.diningTables {
-	width: 500px;
-	margin: 20px auto;
-}
-
-.people {
+.table-size-input {
 	width: 300px;
 	height: 40px;
 	margin: 20px 0;
 	text-align: center;
 }
 
-.tableSize {
+.shaded-box {
 	width: 400px;
 	margin: 0 auto;
+	padding-top: 10px;
+	padding-bottom: 20px;
 	text-align: center;
+	background-color: #e2eff1;
+	border-radius: 10px;
 }
 
-.signout {
-	text-align: center;
-	vertical-align: center;
-	margin-top: 7px;
+/* Add guests and +1's */
+
+.add-next-guest {
+	background-color: #6CCECB;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
-#edit {
-	width: 400px;
-	margin: 0 auto;
-	text-align: center;
+.input-list {
+	margin-top: 20px;
 }
 
-#edit div {
+.highlight-box {
+	background-color: #e2eff1;
+	text-indent: 10px;
+}
+
+.plus-one {
+  margin-top: 20px;
+  color: #473E3F;
+}
+
+.done-adding {
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+/* Add Enemies view */
+
+.constraints-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+
+/***********************************/
+/* Guest List and Edit Guest view */
+/***********************************/
+
+.guest-name {
+	cursor: pointer;
+}
+
+.guest-name:hover {
+	background-color: #65799b;
+	color: #FFF;
+}
+
+div .guest-info {
+	text-align: center;
+	margin-bottom: 10px
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.bold {
+	font-weight: bold;
+	font-size: 12pt;
+	color: #65799b;
+}
+
+h5 .listview {
+	text-align: center;
+	margin: 10px 0;
+}
+
+.all-guests-head {
+	color: #555273;
+}
+
+.fix-width {
+	width: 120px;
+}
+
+.fix-width-xl {
+	width: 300px;
+}
+
+div #edit {
+	color: #555273;
 	text-align: left;
 	font-size: 16px;
-	background-color: #dddddd;
-	padding: 5px 0 5px 40px;
+	background-color: #e2eff1;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
 	border-radius: 10px;
 }

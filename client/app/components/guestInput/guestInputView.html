@@ -15,15 +15,16 @@
 </div>
 
 <div class="container default" ng-controller="guestInputCtrl">
-	<div class='tableSize' ng-show='peopleInput'>
-		<h2 class='headline'>Number of Guests Per Table</h2>
-		<form name='numOfPpl'>
-			<input class='people' ng-model='peoplePerTable' placeholder='Number of guests per table' required>
-			<button class="btn btn-default add-next-guest" ng-click='moveOn()' ng-disabled="numOfPpl.$invalid">Add Guest Information</button>
+  <!-- view to input guests per table -->
+	<div class="shaded-box color-border" ng-show="peopleInput">
+		<h2 class="headline">Guests Per Table</h2>
+		<form name="numOfPpl">
+			<input class="table-size-input" ng-model="peoplePerTable" placeholder="Number required" required>
+			<button class="btn btn-default add-next-guest" ng-click="moveOn()" ng-disabled="numOfPpl.$invalid">Add Guest Information</button>
 		</form>
 	</div>
-
-	<div ng-show='guestInput'>
+  <!-- view to input guests -->
+	<div ng-show="guestInput">
 	  <form name="guestInputForm" role="form" novalidate>
 
 	  <div class="row">
@@ -80,7 +81,7 @@
   <div ng-show="constraintInput" class="color-border">
   <div class="row">
 	  <div class="col-md-12">
-	  <h3 class="constraints-header">Add Constraints</h3>
+	  <h3 class="constraints-header">Declare Enemies</h3>
 	  </div>
   </div>
 
@@ -88,7 +89,7 @@
 	  	<div class="col-md-6">
 		    <ul>
 		  	  <label>Guest Name
-		  	    <select ng-model="guest" ng-options="guest.guestName for guest in guests">
+		  	    <select ng-model="guest" ng-options="guest.guestName for guest in guests | orderBy: 'guestName' ">
 			  	  	<option value="">-- choose guest --</option>
 			  	  </select>
 		  	  </label>
@@ -97,7 +98,7 @@
 		  <div class="col-md-6">
 		  <ul>
 		  	<label>Enemy Name
-		  	  <select ng-model="enemy" ng-options="enemy.guestName for enemy in guests">
+		  	  <select ng-model="enemy" ng-options="enemy.guestName for enemy in guests | orderBy: 'guestName' ">
 		  	  	<option value="">-- choose enemy --</option>
 		  	  </select>
 		  	</label>
@@ -105,16 +106,16 @@
 		  </div>
 	  </div>
 
-	  <div class="row">
-	  	<div class="col-md-3">
-	  		<button class="btn btn-default add-next-guest" ng-click="addConstraint()">Update and Add Another Constraint</button>
-	  	</div>
-	  </div>
+	  <div class="flex-item">
+	  	<!-- <div class="col-md-3"> -->
+	  		<button class="btn btn-default add-next-guest" id="top-margin" ng-click="addConstraint()">Update and Add More Enemies</button>
+	  	<!-- </div> -->
+	  <!-- </div> -->
 
-	  <div class="row">
-	  	<div class="col-md-3">
-	  		<button class="btn btn-default done-adding" ng-click="addAllGuests()">Done! Get My Chart!</button>
-	  	</div>
+	  <div class="flex-item">
+	  	<!-- <div class="col-md-3"> -->
+	  		<button class="btn btn-default done-adding" ng-click="addAllGuests()">Done: Get My Chart!</button>
+	  	<!-- </div> -->
 	  </div>
   </div>
 
