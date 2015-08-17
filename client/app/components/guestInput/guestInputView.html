@@ -89,7 +89,7 @@
 	  	<div class="col-md-6">
 		    <ul>
 		  	  <label>Guest Name
-		  	    <select ng-model="guest" ng-options="guest.guestName for guest in guests">
+		  	    <select ng-model="guest" ng-options="guest.guestName for guest in guests | orderBy: 'guestName' ">
 			  	  	<option value="">-- choose guest --</option>
 			  	  </select>
 		  	  </label>
@@ -98,7 +98,7 @@
 		  <div class="col-md-6">
 		  <ul>
 		  	<label>Enemy Name
-		  	  <select ng-model="enemy" ng-options="enemy.guestName for enemy in guests">
+		  	  <select ng-model="enemy" ng-options="enemy.guestName for enemy in guests | orderBy: 'guestName' ">
 		  	  	<option value="">-- choose enemy --</option>
 		  	  </select>
 		  	</label>
