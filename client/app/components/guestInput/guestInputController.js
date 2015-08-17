@@ -13,6 +13,7 @@ angular.module('seatly.guestInput', [])
 	$scope.peopleInput = true;
 	$scope.guestInput = false;
 	$scope.constraintInput = false;
+  $scope.showError = false;
 
 	// variable to reset pristine status of input after user clicks "Continue adding guests"
 	$scope.isPristineAgain = false;
@@ -25,23 +26,48 @@ angular.module('seatly.guestInput', [])
 
 	// add a guest and optional +1 to guests view
 	$scope.addGuest = function() {
-		var guest = {
-			"guestName": $scope.guestName,
-			"friendName": $scope.friendName,
-			"diningTableId": null,
-			"constraints": []
-		};
-		$scope.guests.push(guest);
+    // helper function to check if guestname or friendname already exists
+    var checkForDuplicate = function(list, key, target) {
+      $scope.showError = false;
+      for (var i = 0; i < list.length; i++) {
+        if (list[i][key].toUpperCase() === target.toUpperCase()) {
+          $scope.showError = true;
+        }
+      }
+    };
+    // create and validate guest object 
+    var guest = {
+      'guestName': $scope.guestName,
+      'friendName': $scope.friendName,
+      'diningTableId': null,
+      'constraints': []
+    };
+    checkForDuplicate($scope.guests, 'guestName', guest.guestName);
 
+    if ($scope.showError === false) {
+  		$scope.guests.push(guest); 
+    }
+
+    // create and validate friend as new guest object
+    // TODO: add validation so that a duplicate friendname will not be included as friendName property of guest object
+    // TODO: Ensure that a unique friendname cannot be added if the primary guestname is a duplicate 
 		if ($scope.friendName) {
 			var newGuest = {
-				"guestName": $scope.friendName,
-				"friendName": $scope.guestName,
-				"diningTableId": null,
-				"constraints": []
+				'guestName': $scope.friendName,
+				'friendName': $scope.guestName,
+				'diningTableId': null,
+				'constraints': []
 			};
-			$scope.guests.push(newGuest);
-		}
+      checkForDuplicate($scope.guests, 'guestName', newGuest.guestName);
+     
+      if ($scope.showError === false) {
+        $scope.guests.push(newGuest);
+      }
+      
+    }
+
+
+    console.log($scope.guests);
 		// reset the guest input fields
 		$scope.guestName = '';
 		$scope.friendName = '';
