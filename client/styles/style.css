@@ -200,3 +200,14 @@ div #edit {
 	padding-left: 20px;
 	border-radius: 10px;
 }
+
+/* guests */
+
+.guest-name {
+	cursor: pointer;
+}
+
+.guest-name:hover {
+	background-color: #65799b;
+	color: #FFF;
+}

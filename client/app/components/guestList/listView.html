@@ -22,7 +22,7 @@
       <h4 class="flex-item">Number of Tables: {{ diningTbls.length }} </h4>
     <div class='listview'>
 
-      <table class="table table-hover table-bordered" ng-repeat="diningTbl in diningTbls">
+      <table class="table table-bordered" ng-repeat="diningTbl in diningTbls | orderBy: 'diningTableName' ">
       <caption class="bold">Table {{ diningTbl.diningTableName }}</caption>
       <thead>
         <tr class="blue">
@@ -33,7 +33,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="guest in diningTbl.guestsAtTable">
-          <td class="fix-width highlight-blue" ng-click="fauxRedirect(guest.guestName)">{{ guest.guestName }}</td>
+          <td class="fix-width highlight-blue guest-name" ng-click="fauxRedirect(guest.guestName)">{{ guest.guestName }}</td>
           <td class="fix-width" ng-click="fauxRedirect(guest.guestName)">{{ guest.friendName }}</td>
           <td class="fix-width-xl" ng-click='fauxRedirect(guest.guestName)'><div ng-repeat="enemy in guest.constraints">{{ enemy }}</div></td>
         </tr>
