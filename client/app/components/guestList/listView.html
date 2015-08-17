@@ -53,7 +53,8 @@
           <strong>+1</strong>: {{ guest.friendName }}
         </div>
         <div>
-          <strong>Enemies</strong>: <span ng-repeat="enemy in guest.constraints">{{ enemy }}</span>
+        <!-- TODO: modify ngRepeat to not add comma to last item in list -->
+          <strong>Enemies</strong>: <span ng-repeat="enemy in guest.constraints">{{ enemy }}, </span>
         </div>
       </div>
 
