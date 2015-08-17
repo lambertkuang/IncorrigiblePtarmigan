@@ -15,11 +15,6 @@ angular.module('seatly', [
         templateUrl: 'app/components/auth/signupView.html',
         controller: 'AuthController'
       })
-      .when('/', {
-        templateUrl: 'app/components/guestInput/guestInputView.html',
-        controller: 'guestInputCtrl',
-        controllerAs: 'guestInput'
-      })
       .when('/list', {
         templateUrl: 'app/components/guestList/listView.html',
         controller: 'listController'
@@ -28,6 +23,10 @@ angular.module('seatly', [
         templateUrl: 'app/components/guestInput/guestInputView.html',
         controller: 'guestInputCtrl',
         controllerAs: 'guestInput'
+      })
+      .otherwise({
+        templateUrl: 'app/components/auth/signinView.html',
+        controller: 'AuthController'
       });
 
     $httpProvider.interceptors.push('AttachTokens');
