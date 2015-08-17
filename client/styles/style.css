@@ -119,45 +119,45 @@ h1, .link {
 	color: #473E3F;
 }
 
-table, th, td {
+/*table, th, td {
 	border: 1px solid black;
 	padding: 5px;
 }
-
-.name:hover {
+*/
+/*.name:hover {
 	background-color: #218C8D;
 	cursor: pointer;
-}
+}*/
 
-tr:nth-child(even) {
+/*tr:nth-child(even) {
 	background-color: #6CCECB; 
-}
+}*/
 
-tr:nth-child(odd) {
+/*tr:nth-child(odd) {
 	background-color: #8EDC9D;
 }
+*/
 
-
-tr:nth-child(2) {
+/*tr:nth-child(2) {
 	background-color: #F9E559;
 }
 tr:nth-child(1) {
 	background-color: #EF7126;
-}
+}*/
 
-.listview h5 {
+h5 .listview {
 	text-align: center;
 	margin: 10px 0;
 }
 
-table: {
+/*table: {
 	margin: 10px;
-}
+}*/
 
-.diningTables {
+/*.diningTables {
 	width: 500px;
 	margin: 20px auto;
-}
+}*/
 
 .people {
 	width: 300px;
@@ -184,10 +184,20 @@ table: {
 	text-align: center;
 }
 
-#edit div {
+div .guest-info {
+	text-align: center;
+	margin-bottom: 10px
+}
+
+div #edit {
+	color: #555273;
 	text-align: left;
 	font-size: 16px;
-	background-color: #dddddd;
-	padding: 5px 0 5px 40px;
+	background-color: #e2eff1;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
 	border-radius: 10px;
 }
