@@ -124,10 +124,10 @@ table, th, td {
 	padding: 5px;
 }
 
-/*.name:hover {
+.name:hover {
 	background-color: #218C8D;
 	cursor: pointer;
-}*/
+}
 
 tr:nth-child(even) {
 	background-color: #6CCECB; 
@@ -176,4 +176,18 @@ table: {
 	text-align: center;
 	vertical-align: center;
 	margin-top: 7px;
+}
+
+#edit {
+	width: 400px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#edit div {
+	text-align: left;
+	font-size: 16px;
+	background-color: #dddddd;
+	padding: 5px 0 5px 40px;
+	border-radius: 10px;
 }

@@ -39,18 +39,20 @@
   </div>
 
   <div ng-show='inEdit' id='edit'>
-    <h1 class='headline'>Edit Guest Information</h1>
+    <h1 class='headline'>Guest Information</h1>
     <form name='editGuestForm'>
       <div>
-        <input ng-model='guest.guestName' placeholder="this guest's name">
+        Name: {{ guest.guestName }}
       </div>
       <div>
-        <input ng-model='guest.friendName' placeholder="this guest's plus-one">
+        Plus-One: {{ guest.friendName }}
       </div>
       <div>
-        <input ng-model='guest.constraints' placeholder='any guests this guest should not sit with, separated by commas'>
+        People They Shouldn't Sit Near: {{ guest.constraints }}
       </div>
-      <button ng-click='editGuest()'>Done Editing Guest</button>
+      <button class='btn btn-default' ng-click='deleteGuest()'>Delete Guest</button>
+      <button class='btn btn-default' ng-click='editGuest()'>Done Viewing Guest</button>
+      <button class='btn btn-default add-next-guest' ng-click='reverseRedirect()'>Cancel</button>
     </form>
   </div>
 </div>
